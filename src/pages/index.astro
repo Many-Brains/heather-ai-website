@@ -1,9 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import Features from '../components/Features.astro';
+import Showcase from '../components/Showcase.astro';
+import CtaSection from '../components/CtaSection.astro';
 ---
 
 <BaseLayout title="HeatherAI | Your AI Nutrition Coach">
-  <div class="flex items-center justify-center min-h-screen">
-    <h1 class="text-4xl font-bold">HeatherAI — Coming Soon</h1>
-  </div>
+  <Hero />
+  <Stats />
+  <Features />
+  <Showcase />
+  <CtaSection />
 </BaseLayout>
