@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PricingCard from '../components/PricingCard.astro';
+import FaqItem from '../components/FaqItem.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<BaseLayout title="Pricing | HeatherAI" description="Simple pricing for AI nutrition coaching. Start free with meal logging.">
+
+  <!-- Header -->
+  <section class="pt-32 pb-16 px-6 text-center">
+    <h1 class="text-5xl md:text-6xl font-bold tracking-tight">Simple pricing. Start free.</h1>
+    <p class="text-lg text-white/45 mt-4">No hidden fees. Upgrade or cancel anytime.</p>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="px-6 md:px-12 pb-28">
+    <div class="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <PricingCard
+        tier="Meal Logging"
+        price="Free"
+        headline="Track your meals with AI."
+        features={[
+          'Unlimited photo meal logging',
+          'Instant macro estimates',
+          'Meal history',
+        ]}
+        ctaText="Get Started"
+        ctaHref="https://ai.heatherbauer.com"
+      />
+
+      <PricingCard
+        tier="AI Coaching"
+        price="$39"
+        headline="Your personal nutrition coach."
+        features={[
+          'Everything in Free',
+          'Full HeatherAI chat',
+          'Personalized coaching',
+          'Goal tracking',
+          'Data trends & insights',
+        ]}
+        ctaText="Start Coaching"
+        ctaHref="https://ai.heatherbauer.com"
+        highlighted={true}
+      />
+
+      <PricingCard
+        tier="AI + Human Coach"
+        price="$299"
+        headline="The full experience."
+        features={[
+          'Everything in AI Coaching',
+          '2 private Zoom sessions/mo',
+          'With a registered dietitian',
+          'Personalized plan reviews',
+          'Priority support',
+        ]}
+        ctaText="Contact Us"
+        ctaHref="https://ai.heatherbauer.com"
+      />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[680px] mx-auto">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-12">Frequently asked questions</h2>
+
+      <FaqItem
+        question="What makes HeatherAI different from ChatGPT?"
+        answer="ChatGPT gives generic nutrition information. HeatherAI is built on 20+ years of real coaching methodology from Heather Bauer, RDN — trained on patterns from 5,000+ client transformations. It doesn't just answer questions, it coaches behavior change."
+      />
+      <FaqItem
+        question="Can I cancel anytime?"
+        answer="Yes. No contracts, no commitments. You can upgrade, downgrade, or cancel your plan at any time."
+      />
+      <FaqItem
+        question="Is HeatherAI a replacement for a dietitian?"
+        answer="HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. For the full experience, the AI + Human Coach plan includes sessions with a registered dietitian."
+      />
+      <FaqItem
+        question="How does meal logging work?"
+        answer="Take a photo of your meal, and HeatherAI will estimate macros and provide feedback based on your personal nutrition plan. It's available for free on every plan."
+      />
+      <FaqItem
+        question="What if I'm on a GLP-1 medication?"
+        answer="HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals."
+      />
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <CtaSection
+    headline={"Not sure? Start free."}
+    subline="Try meal logging at no cost. Upgrade when you're ready for coaching."
+    showPricingLink={false}
+  />
+</BaseLayout>
