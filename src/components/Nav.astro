@@ -2,26 +2,50 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-bg-primary/85 backdrop-blur-xl border-b border-white/[0.06]">
-  <a href="/" class="text-[15px] font-semibold tracking-[3px] uppercase text-white/90">
-    Heather<span class="text-accent">AI</span>
-  </a>
-  <div class="flex items-center gap-8">
-    <a
-      href="/about"
-      class:list={["text-[13px] transition-colors", currentPath === '/about/' || currentPath === '/about' ? 'text-white' : 'text-white/55 hover:text-white']}
-    >
-      About
+<nav class="fixed top-0 left-0 right-0 z-50 bg-bg-primary/85 backdrop-blur-xl border-b border-white/[0.06]">
+  <div class="flex items-center justify-between px-6 md:px-12 py-5">
+    <a href="/" class="text-[15px] font-semibold tracking-[3px] uppercase text-white/90">
+      Heather<span class="text-accent">AI</span>
     </a>
-    <a
-      href="/pricing"
-      class:list={["text-[13px] transition-colors", currentPath === '/pricing/' || currentPath === '/pricing' ? 'text-white' : 'text-white/55 hover:text-white']}
-    >
-      Pricing
-    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a
+        href="/about"
+        class:list={["text-[13px] transition-colors", currentPath === '/about/' || currentPath === '/about' ? 'text-white' : 'text-white/55 hover:text-white']}
+      >
+        About
+      </a>
+      <a
+        href="/pricing"
+        class:list={["text-[13px] transition-colors", currentPath === '/pricing/' || currentPath === '/pricing' ? 'text-white' : 'text-white/55 hover:text-white']}
+      >
+        Pricing
+      </a>
+      <a
+        href="https://ai.heatherbauer.com"
+        class="text-[13px] font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
+      >
+        Get Started
+      </a>
+    </div>
+
+    <!-- Mobile menu toggle -->
+    <input type="checkbox" id="mobile-menu" class="hidden peer" />
+    <label for="mobile-menu" class="md:hidden flex flex-col gap-1.5 cursor-pointer p-2">
+      <span class="block w-5 h-0.5 bg-white/70"></span>
+      <span class="block w-5 h-0.5 bg-white/70"></span>
+      <span class="block w-5 h-0.5 bg-white/70"></span>
+    </label>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div class="hidden peer-checked:flex md:hidden flex-col items-center gap-4 pb-6 border-t border-white/[0.06]">
+    <a href="/about" class="text-sm text-white/55 hover:text-white transition-colors pt-4">About</a>
+    <a href="/pricing" class="text-sm text-white/55 hover:text-white transition-colors">Pricing</a>
     <a
       href="https://ai.heatherbauer.com"
-      class="text-[13px] font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
+      class="text-sm font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
     >
       Get Started
     </a>
