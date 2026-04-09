@@ -5,7 +5,7 @@
 Marketing website for HeatherAI — a consumer-facing landing site that drives signups for the app.
 
 - **Stack:** Astro + Tailwind CSS (static site)
-- **Live URL:** TBD (new domain)
+- **Live URL:** getheatherai.com
 - **App URL:** ai.heatherbauer.com (the product this site markets)
 
 ## Related Projects
@@ -41,4 +41,8 @@ npm run preview  # Preview built site locally
 
 ## Deployment
 
-Static site deployed to Vercel/Netlify (TBD). No server-side rendering.
+- **Host:** Vercel (free tier)
+- **Domain:** getheatherai.com (Namecheap)
+- **Auto-deploy:** Every push to `main` triggers a build
+- **SSL:** Auto-provisioned by Vercel
+- Static site, no server-side rendering.
