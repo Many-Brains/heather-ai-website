@@ -1,3 +1,7 @@
+---
+import PhoneMockup from './PhoneMockup.astro';
+---
+
 <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">
   <!-- Badge -->
   <div class="inline-block px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.08] text-[12px] text-accent tracking-[1px] uppercase mb-8">
@@ -10,10 +14,10 @@
   </h1>
 
   <!-- Subline -->
-  <p class="text-lg md:text-xl text-white/50 max-w-[580px] leading-relaxed mt-6">
-    Heather Bauer is a bestselling author, registered dietitian, and one of the most sought-after
-    nutrition coaches in the country. HeatherAI brings her 20 years of expertise to you —
-    personally, daily, and at a fraction of the cost.
+  <p class="text-lg md:text-xl text-white/50 max-w-[600px] leading-relaxed mt-6">
+    Heather Bauer is a bestselling author and one of the nation's most
+    sought-after registered dietitians. HeatherAI brings 20 years of her
+    practice to you — personal, proven, at a fraction of private coaching cost.
   </p>
 
   <!-- CTA -->
@@ -27,9 +31,14 @@
     See pricing &rarr;
   </a>
 
-  <!-- Chat Mockup -->
+  <!-- EXPERIMENT: iPhone mockup with real app screenshot.
+       To revert: delete the <PhoneMockup /> line below and uncomment the original chat mockup. -->
+  <div class="mt-16">
+    <PhoneMockup />
+  </div>
+
+  <!-- ORIGINAL CHAT MOCKUP — uncomment to revert
   <div class="mt-16 w-full max-w-[380px] bg-bg-surface rounded-3xl border border-white/[0.08] p-5 shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
-    <!-- Header -->
     <div class="flex items-center gap-2.5 pb-4 border-b border-white/[0.06] mb-4">
       <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">H</div>
       <div>
@@ -37,7 +46,6 @@
         <div class="text-[11px] text-white/35">Your nutrition coach</div>
       </div>
     </div>
-    <!-- Messages -->
     <div class="flex flex-col gap-2.5">
       <div class="self-end max-w-[85%] px-4 py-3 rounded-2xl rounded-br-sm bg-white/[0.08] text-[13px] text-white/75 leading-relaxed">
         I'm at a work dinner and I already feel like I'm going to blow it. What do I do?
@@ -52,9 +60,9 @@
         Perfect. Enjoy dinner — you're doing the work. Check in after if you want.
       </div>
     </div>
-    <!-- Input -->
     <div class="mt-4 px-4 py-3 bg-white/[0.05] border border-white/[0.08] rounded-xl text-[13px] text-white/30">
       Ask HeatherAI anything...
     </div>
   </div>
+  -->
 </section>
