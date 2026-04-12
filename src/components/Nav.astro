@@ -36,14 +36,16 @@ const currentPath = Astro.url.pathname;
       </a>
     </div>
 
-    <!-- Mobile menu toggle -->
-    <input type="checkbox" id="mobile-menu" class="hidden peer" />
+    <!-- Mobile menu toggle (label only — checkbox lives outside flex container for peer to work) -->
     <label for="mobile-menu" class="md:hidden flex flex-col gap-1.5 cursor-pointer p-2">
       <span class="block w-5 h-0.5 bg-white/70"></span>
       <span class="block w-5 h-0.5 bg-white/70"></span>
       <span class="block w-5 h-0.5 bg-white/70"></span>
     </label>
   </div>
+
+  <!-- Checkbox must be a sibling of the dropdown for peer-checked: to work -->
+  <input type="checkbox" id="mobile-menu" class="hidden peer" />
 
   <!-- Mobile dropdown -->
   <div class="hidden peer-checked:flex md:hidden flex-col items-center gap-4 pb-6 border-t border-white/[0.06]">
