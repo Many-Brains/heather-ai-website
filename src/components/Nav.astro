@@ -29,6 +29,12 @@ const currentPath = Astro.url.pathname;
         Pricing
       </a>
       <a
+        href="/contact"
+        class:list={["text-[13px] transition-colors", currentPath === '/contact/' || currentPath === '/contact' ? 'text-white' : 'text-white/55 hover:text-white']}
+      >
+        Contact
+      </a>
+      <a
         href="https://ai.heatherbauer.com"
         class="text-[13px] font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
       >
@@ -52,6 +58,7 @@ const currentPath = Astro.url.pathname;
     <a href="/about" class="text-sm text-white/55 hover:text-white transition-colors pt-4">About</a>
     <a href="/how-it-works" class="text-sm text-white/55 hover:text-white transition-colors">How It Works</a>
     <a href="/pricing" class="text-sm text-white/55 hover:text-white transition-colors">Pricing</a>
+    <a href="/contact" class="text-sm text-white/55 hover:text-white transition-colors">Contact</a>
     <a
       href="https://ai.heatherbauer.com"
       class="text-sm font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
