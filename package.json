@@ -15,5 +15,8 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.2"
   }
 }

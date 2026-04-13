@@ -35,9 +35,13 @@ npm run preview  # Preview built site locally
 
 | Page | Path | Purpose |
 |------|------|---------|
-| Home | `/` | Hero + credibility + features + showcase + CTA |
-| About | `/about` | Heather's story and methodology |
+| Home | `/` | Hero carousel + stats + features + AlwaysOn + pattern library + showcase + testimonials + CTA |
+| About | `/about` | Heather's personal story, career timeline, client testimonials, why HeatherAI |
+| How It Works | `/how-it-works` | Data, intelligence, frameworks, peer-reviewed science deep dive |
 | Pricing | `/pricing` | 3 tiers (Free / $39 / $299) + FAQ |
+| Contact | `/contact` | Typeform embed for inquiries |
+| Privacy | `/privacy` | Privacy policy (operated by Many Brains, Inc.) |
+| Terms | `/terms` | Terms of service (operated by Many Brains, Inc.) |
 
 ## Deployment
 
