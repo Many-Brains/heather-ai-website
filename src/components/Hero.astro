@@ -1,5 +1,5 @@
 ---
-import PhoneMockup from './PhoneMockup.astro';
+import PhoneCarousel from './PhoneCarousel.astro';
 ---
 
 <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">
@@ -31,38 +31,9 @@ import PhoneMockup from './PhoneMockup.astro';
     See pricing &rarr;
   </a>
 
-  <!-- EXPERIMENT: iPhone mockup with real app screenshot.
-       To revert: delete the <PhoneMockup /> line below and uncomment the original chat mockup. -->
+  <!-- App screenshot carousel in iPhone frame -->
   <div class="mt-16">
-    <PhoneMockup />
+    <PhoneCarousel />
   </div>
 
-  <!-- ORIGINAL CHAT MOCKUP — uncomment to revert
-  <div class="mt-16 w-full max-w-[380px] bg-bg-surface rounded-3xl border border-white/[0.08] p-5 shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
-    <div class="flex items-center gap-2.5 pb-4 border-b border-white/[0.06] mb-4">
-      <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-bold">H</div>
-      <div>
-        <div class="text-sm font-semibold">HeatherAI</div>
-        <div class="text-[11px] text-white/35">Your nutrition coach</div>
-      </div>
-    </div>
-    <div class="flex flex-col gap-2.5">
-      <div class="self-end max-w-[85%] px-4 py-3 rounded-2xl rounded-br-sm bg-white/[0.08] text-[13px] text-white/75 leading-relaxed">
-        I'm at a work dinner and I already feel like I'm going to blow it. What do I do?
-      </div>
-      <div class="self-start max-w-[85%] px-4 py-3 rounded-2xl rounded-bl-sm bg-accent/[0.12] text-[13px] text-white/85 leading-relaxed">
-        You've got this. Remember last Thursday — same situation, and you nailed it. Start with the grilled fish, skip the bread basket. That's your pattern when it works.
-      </div>
-      <div class="self-end max-w-[85%] px-4 py-3 rounded-2xl rounded-br-sm bg-white/[0.08] text-[13px] text-white/75 leading-relaxed">
-        You're right. Ordering the salmon. Thank you.
-      </div>
-      <div class="self-start max-w-[85%] px-4 py-3 rounded-2xl rounded-bl-sm bg-accent/[0.12] text-[13px] text-white/85 leading-relaxed">
-        Perfect. Enjoy dinner — you're doing the work. Check in after if you want.
-      </div>
-    </div>
-    <div class="mt-4 px-4 py-3 bg-white/[0.05] border border-white/[0.08] rounded-xl text-[13px] text-white/30">
-      Ask HeatherAI anything...
-    </div>
-  </div>
-  -->
 </section>

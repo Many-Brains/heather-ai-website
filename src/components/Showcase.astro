@@ -1,10 +1,10 @@
-<section class="py-28 px-6 md:px-12 border-t border-white/[0.06] text-center">
+<section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
   <div class="max-w-[1000px] mx-auto">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Daily coaching,<br />not just weekly appointments.</h2>
-    <p class="text-lg text-white/45 mb-10 max-w-[520px] mx-auto">Real change happens in the daily moments — at the restaurant, the grocery store, the late-night kitchen.</p>
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-center">Daily coaching,<br />not just weekly appointments.</h2>
+    <p class="text-lg text-white/45 mb-10 max-w-[520px] mx-auto text-center">Real change happens in the daily moments — at the restaurant, the grocery store, the late-night kitchen.</p>
 
     <!-- Alpha user testimonial -->
-    <div class="max-w-[680px] mx-auto mb-16">
+    <div class="max-w-[680px] mx-auto mb-20 text-center">
       <div class="text-[48px] leading-none text-accent/40 font-serif mb-1 select-none">&ldquo;</div>
       <p class="text-base md:text-lg text-white/75 leading-relaxed italic font-medium">
         It kept me on track daily with real time decision making, keeping me accountable. When I was out of the house eating at restaurants it was very helpful in making choices that went with my meal plan and goal.
@@ -14,38 +14,88 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
-        <div class="text-3xl mb-4">&#x1F957;</div>
-        <h3 class="text-base font-semibold mb-2">Personalized Meal Planning &amp; Tracking</h3>
-        <p class="text-[13px] text-white/40 leading-relaxed">
-          Daily meal plans built around your goals, preferences, and real-life patterns. Log a meal with a photo — HeatherAI compares it to your plan, not just your macros.
-        </p>
+    <!-- Feature rows: alternating phone + text -->
+    <div class="space-y-20 md:space-y-28">
+
+      <!-- Row 1: Meal Planning — phone left, text right -->
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
+        <div class="shrink-0" style="width: 220px;">
+          <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
+            <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
+              <img src="/images/app/meal-planning.webp" alt="HeatherAI meal planning view" class="block w-full" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl mb-4">&#x1F957;</div>
+          <h3 class="text-xl font-bold mb-3">Personalized Meal Planning &amp; Tracking</h3>
+          <p class="text-sm text-white/50 leading-relaxed max-w-[420px]">
+            Daily meal plans built around your goals, preferences, and real-life patterns.
+            Log a meal with a photo — HeatherAI compares it to your plan, not just your macros.
+            Confirm what you ate, flag deviations, or skip — and get coached on the difference.
+          </p>
+        </div>
       </div>
 
-      <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
-        <div class="text-3xl mb-4">&#x1F4AC;</div>
-        <h3 class="text-base font-semibold mb-2">In-the-Moment Coaching</h3>
-        <p class="text-[13px] text-white/40 leading-relaxed">
-          Staring at a menu? Stress eating? Traveling for work? Get coaching when you need it, not next Tuesday at 3pm.
-        </p>
+      <!-- Row 2: Restaurant Guidance — text left, phone right -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-14">
+        <div class="shrink-0" style="width: 220px;">
+          <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
+            <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
+              <img src="/images/app/restaurant-guidance.webp" alt="HeatherAI restaurant ordering guidance" class="block w-full" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl mb-4">&#x1F4AC;</div>
+          <h3 class="text-xl font-bold mb-3">In-the-Moment Coaching</h3>
+          <p class="text-sm text-white/50 leading-relaxed max-w-[420px]">
+            Staring at a menu? Stress eating? Traveling for work? Text HeatherAI in the moment
+            and get specific guidance — not generic tips. "Start with the salad. Skip the bread
+            basket. Kitchen is closed after your protein shake."
+          </p>
+        </div>
       </div>
 
-      <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
-        <div class="text-3xl mb-4">&#x1F514;</div>
-        <h3 class="text-base font-semibold mb-2">Proactive Check-ins</h3>
-        <p class="text-[13px] text-white/40 leading-relaxed">
-          HeatherAI reaches out when you need it — not when you remember. Gone quiet? She notices. Missed breakfast three days running? She asks why.
-        </p>
+      <!-- Row 3: Proactive Check-ins — phone left, text right -->
+      <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
+        <div class="shrink-0" style="width: 220px;">
+          <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
+            <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
+              <img src="/images/app/in-moment-coaching.webp" alt="HeatherAI coaching through stress eating" class="block w-full" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl mb-4">&#x1F514;</div>
+          <h3 class="text-xl font-bold mb-3">Proactive Check-ins</h3>
+          <p class="text-sm text-white/50 leading-relaxed max-w-[420px]">
+            HeatherAI reaches out when you need it — not when you remember. Gone quiet?
+            She notices. Missed breakfast three days running? She asks why. Falling into a
+            pattern? She names it before you do.
+          </p>
+        </div>
       </div>
 
-      <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
-        <div class="text-3xl mb-4">&#x1F4F9;</div>
-        <h3 class="text-base font-semibold mb-2">Weekly Video Check-In from HeatherAI</h3>
-        <p class="text-[13px] text-white/40 leading-relaxed">
-          Every week, a personalized video from HeatherAI — what worked, what didn't, and how we're tackling the week ahead. You'll get a text when it's ready.
-        </p>
+      <!-- Row 4: Weekly Video — text left, phone right -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-14">
+        <div class="shrink-0" style="width: 220px;">
+          <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
+            <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
+              <img src="/images/app/weekly-video.webp" alt="HeatherAI weekly video check-in" class="block w-full" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="text-3xl mb-4">&#x1F4F9;</div>
+          <h3 class="text-xl font-bold mb-3">Weekly Video Check-In from HeatherAI</h3>
+          <p class="text-sm text-white/50 leading-relaxed max-w-[420px]">
+            Every week, a personalized video from HeatherAI — what worked, what didn't,
+            and how we're tackling the week ahead. You'll get a text when it's ready.
+          </p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>

@@ -1,0 +1,91 @@
+---
+// PhoneCarousel — cycling app screenshots in an iPhone frame for the hero.
+// 4 screenshots fade-cycle every 5 seconds (20s total loop).
+---
+
+<div class="phone-carousel relative mx-auto" style="width: 300px;">
+  <!-- Outer bezel / frame -->
+  <div
+    class="relative rounded-[3rem] p-[12px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06),inset_0_0_0_1px_rgba(255,255,255,0.04)]"
+  >
+    <!-- Inner screen -->
+    <div class="relative rounded-[2.3rem] overflow-hidden bg-[#0c1724]">
+      <!-- Status bar -->
+      <div class="relative flex items-center justify-between px-7 h-[42px] text-white bg-[#0a0a0a]">
+        <span class="text-[13px] font-semibold tracking-tight relative z-10">9:41</span>
+        <div class="absolute left-1/2 top-[9px] -translate-x-1/2 w-[80px] h-[24px] rounded-full bg-black"></div>
+        <div class="flex items-center gap-[5px] relative z-10">
+          <svg width="15" height="10" viewBox="0 0 15 10" fill="currentColor" aria-hidden="true">
+            <rect x="0" y="6.5" width="2.5" height="3.5" rx="0.5" />
+            <rect x="3.5" y="4.5" width="2.5" height="5.5" rx="0.5" />
+            <rect x="7" y="2.5" width="2.5" height="7.5" rx="0.5" />
+            <rect x="10.5" y="0" width="2.5" height="10" rx="0.5" />
+          </svg>
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 3.5 A9 9 0 0 1 13 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            <path d="M2.8 5.7 A6 6 0 0 1 11.2 5.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            <path d="M4.6 7.8 A3 3 0 0 1 9.4 7.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            <circle cx="7" cy="9.3" r="0.7" fill="currentColor" />
+          </svg>
+          <svg width="26" height="11" viewBox="0 0 26 11" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="22" height="10" rx="2.5" stroke="currentColor" stroke-opacity="0.5" />
+            <rect x="2" y="2" width="17" height="7" rx="1" fill="currentColor" />
+            <rect x="23.5" y="3.5" width="2" height="4" rx="0.7" fill="currentColor" fill-opacity="0.5" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Screenshot carousel area -->
+      <div class="relative" style="aspect-ratio: 600 / 1010;">
+        <img src="/images/app/meal-planning.webp" alt="HeatherAI daily meal plan" class="carousel-slide" style="animation-delay: 0s;" loading="eager" />
+        <img src="/images/app/restaurant-guidance.webp" alt="HeatherAI restaurant ordering guidance" class="carousel-slide" style="animation-delay: 5s;" loading="eager" />
+        <img src="/images/app/in-moment-coaching.webp" alt="HeatherAI stress eating coaching" class="carousel-slide" style="animation-delay: 10s;" loading="lazy" />
+        <img src="/images/app/weekly-video.webp" alt="HeatherAI weekly video check-in" class="carousel-slide" style="animation-delay: 15s;" loading="lazy" />
+      </div>
+    </div>
+
+    <!-- Side button highlights -->
+    <div class="absolute left-[-2px] top-[120px] w-[2px] h-[32px] bg-white/5 rounded-l-sm"></div>
+    <div class="absolute left-[-2px] top-[170px] w-[2px] h-[60px] bg-white/5 rounded-l-sm"></div>
+    <div class="absolute left-[-2px] top-[240px] w-[2px] h-[60px] bg-white/5 rounded-l-sm"></div>
+    <div class="absolute right-[-2px] top-[200px] w-[2px] h-[90px] bg-white/5 rounded-r-sm"></div>
+  </div>
+
+  <!-- Ambient glow -->
+  <div class="absolute inset-0 -z-10 blur-[80px] opacity-40 bg-gradient-to-b from-accent/20 via-accent/5 to-transparent rounded-full"></div>
+</div>
+
+<style>
+  .carousel-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    animation: carousel-fade 20s infinite;
+  }
+
+  /* First image visible immediately */
+  .carousel-slide:first-child {
+    animation-name: carousel-fade-first;
+  }
+
+  @keyframes carousel-fade {
+    0% { opacity: 0; }
+    3% { opacity: 1; }
+    22% { opacity: 1; }
+    25% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* First image starts visible, then follows same cycle */
+  @keyframes carousel-fade-first {
+    0% { opacity: 1; }
+    22% { opacity: 1; }
+    25% { opacity: 0; }
+    97% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+</style>
