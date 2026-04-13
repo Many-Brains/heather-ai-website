@@ -1,6 +1,7 @@
 ---
 // PhoneCarousel — cycling app screenshots in an iPhone frame for the hero.
 // 4 screenshots fade-cycle every 5 seconds (20s total loop).
+// Synced captions below the phone describe each screenshot.
 ---
 
 <div class="phone-carousel relative mx-auto" style="width: 300px;">
@@ -51,6 +52,14 @@
     <div class="absolute right-[-2px] top-[200px] w-[2px] h-[90px] bg-white/5 rounded-r-sm"></div>
   </div>
 
+  <!-- Synced captions below the phone -->
+  <div class="relative h-[40px] mt-5">
+    <p class="carousel-caption" style="animation-delay: 0s;">Your personalized meal plan for the day — confirm, swap, or skip.</p>
+    <p class="carousel-caption" style="animation-delay: 5s;">Real-time restaurant coaching — what to order, what to skip.</p>
+    <p class="carousel-caption" style="animation-delay: 10s;">Coaching through the hard moments — by name, with a plan.</p>
+    <p class="carousel-caption" style="animation-delay: 15s;">Your weekly video check-in from HeatherAI.</p>
+  </div>
+
   <!-- Ambient glow -->
   <div class="absolute inset-0 -z-10 blur-[80px] opacity-40 bg-gradient-to-b from-accent/20 via-accent/5 to-transparent rounded-full"></div>
 </div>
@@ -67,8 +76,24 @@
     animation: carousel-fade 20s infinite;
   }
 
-  /* First image visible immediately */
   .carousel-slide:first-child {
+    animation-name: carousel-fade-first;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    opacity: 0;
+    animation: carousel-fade 20s infinite;
+  }
+
+  .carousel-caption:first-child {
     animation-name: carousel-fade-first;
   }
 
@@ -80,7 +105,6 @@
     100% { opacity: 0; }
   }
 
-  /* First image starts visible, then follows same cycle */
   @keyframes carousel-fade-first {
     0% { opacity: 1; }
     22% { opacity: 1; }
