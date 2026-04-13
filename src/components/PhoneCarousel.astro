@@ -243,14 +243,12 @@
       // Pause the video immediately — wait for scroll visibility
       firstSlide.pause();
 
-      // When the video completes one loop, start auto-cycling
+      // When the video ends, immediately advance and start cycling
       firstSlide.addEventListener('ended', function() {
         if (!videoPlayed && !paused) {
           videoPlayed = true;
-          // Short pause after video ends, then start cycling
-          setTimeout(function() {
-            if (!paused && !started) startTimer();
-          }, 1000);
+          next();
+          startTimer();
         }
       });
 
