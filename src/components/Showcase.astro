@@ -61,8 +61,50 @@
       <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
         <div class="shrink-0" style="width: 280px;">
           <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
-            <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
-              <img src="/images/app/proactive-checkin.webp" alt="HeatherAI proactive SMS check-in" class="block w-full" loading="lazy" />
+            <div class="rounded-[1.6rem] overflow-hidden bg-black flex flex-col" style="aspect-ratio: 9 / 16;">
+              <!-- iMessage header -->
+              <div class="flex items-center justify-center pt-4 pb-3 border-b border-white/[0.08] shrink-0">
+                <div class="flex flex-col items-center gap-1">
+                  <div class="w-8 h-8 rounded-full bg-[#5856D6] flex items-center justify-center text-[11px] font-bold text-white">H</div>
+                  <span class="text-[10px] text-white font-semibold">HeatherAI</span>
+                </div>
+              </div>
+
+              <!-- Messages area -->
+              <div class="flex-1 px-3 py-4 flex flex-col justify-center gap-3">
+                <!-- Timestamp -->
+                <p class="text-[8px] text-white/30 text-center mb-1">Fri, Apr 11, 9:30 AM</p>
+
+                <!-- Message 1 -->
+                <div class="self-start max-w-[88%] px-3 py-2 rounded-2xl rounded-bl-md bg-[#262628]">
+                  <p class="text-[10px] text-white/90 leading-relaxed">
+                    Hey! It's been a few days — just checking in, no pressure. You were doing great last week.
+                  </p>
+                </div>
+
+                <!-- Message 2 -->
+                <div class="self-start max-w-[88%] px-3 py-2 rounded-2xl rounded-bl-md bg-[#262628]">
+                  <p class="text-[10px] text-white/90 leading-relaxed">
+                    When you're ready, pop back into the app and I'll have a simple 48hr bounce-back plan waiting. Protein-first, zero stress. 💪
+                  </p>
+                </div>
+
+                <!-- Message 3 -->
+                <div class="self-start max-w-[70%] px-3 py-2 rounded-2xl rounded-bl-md bg-[#262628]">
+                  <p class="text-[10px] text-white/90 leading-relaxed">
+                    No need to start over. We pick up right where you left off.
+                  </p>
+                </div>
+              </div>
+
+              <!-- iMessage input bar -->
+              <div class="px-3 pb-3 pt-2 shrink-0">
+                <div class="flex items-center gap-2">
+                  <div class="flex-1 px-3 py-1.5 rounded-full border border-white/[0.15] text-[9px] text-white/25">
+                    Text Message
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
