@@ -124,7 +124,7 @@
         <div class="shrink-0" style="width: 280px;">
           <div class="rounded-[2rem] p-[8px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
             <div class="rounded-[1.6rem] overflow-hidden bg-[#0c1724]">
-              <video src="/images/app/weekly-video.mp4" class="block w-full" autoplay muted loop playsinline aria-label="HeatherAI weekly video check-in"></video>
+              <video id="showcase-weekly-video" src="/images/app/weekly-video.mp4" class="block w-full" muted loop playsinline preload="auto" aria-label="HeatherAI weekly video check-in"></video>
             </div>
           </div>
         </div>
@@ -141,3 +141,26 @@
     </div>
   </div>
 </section>
+
+<script is:inline>
+  // Wait for full page load (including video preload)
+  window.addEventListener('load', function() {
+    var video = document.getElementById('showcase-weekly-video');
+    if (!video) { console.error('showcase video not found'); return; }
+
+    // Force muted property (HTML attribute alone isn't always enough)
+    video.muted = true;
+
+    var observer = new IntersectionObserver(function(entries) {
+      var entry = entries[0];
+      if (entry.isIntersecting) {
+        video.currentTime = 0;
+        video.play().catch(function(e) { console.log('play blocked:', e); });
+      } else {
+        video.pause();
+      }
+    }, { threshold: 0.25 });
+
+    observer.observe(video);
+  });
+</script>
