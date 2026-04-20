@@ -3,6 +3,7 @@ interface Props {
   tier: string;
   price: string;
   period?: string;
+  priceNote?: string;
   headline: string;
   features: string[];
   ctaText: string;
@@ -11,7 +12,7 @@ interface Props {
   comingSoon?: boolean;
 }
 
-const { tier, price, period = '/mo', headline, features, ctaText, ctaHref, highlighted = false, comingSoon = false } = Astro.props;
+const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, highlighted = false, comingSoon = false } = Astro.props;
 ---
 
 <div class:list={[
@@ -30,6 +31,9 @@ const { tier, price, period = '/mo', headline, features, ctaText, ctaHref, highl
     <span class="text-4xl font-bold">{price}</span>
     {price !== 'Free' && <span class="text-base text-white/40">{period}</span>}
   </div>
+  {priceNote && (
+    <p class="text-[12px] text-accent font-semibold mb-3">{priceNote}</p>
+  )}
   <p class="text-sm text-white/50 mb-6">{headline}</p>
 
   <ul class="space-y-3 mb-8 flex-1">
