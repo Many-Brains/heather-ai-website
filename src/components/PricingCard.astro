@@ -7,12 +7,20 @@ interface Props {
   headline: string;
   features: string[];
   ctaText: string;
-  ctaHref: string;
+  ctaHref?: string;
+  typeformId?: string;
   highlighted?: boolean;
   comingSoon?: boolean;
 }
 
-const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, highlighted = false, comingSoon = false } = Astro.props;
+const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, typeformId, highlighted = false, comingSoon = false } = Astro.props;
+
+const ctaClasses = [
+  "block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors cursor-pointer",
+  highlighted
+    ? "bg-accent hover:bg-accent-hover text-white"
+    : "bg-white/[0.08] hover:bg-white/[0.12] text-white"
+];
 ---
 
 <div class:list={[
@@ -45,15 +53,24 @@ const { tier, price, period = '/mo', priceNote, headline, features, ctaText, cta
     ))}
   </ul>
 
-  <a
-    href={ctaHref}
-    class:list={[
-      "block text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors",
-      highlighted
-        ? "bg-accent hover:bg-accent-hover text-white"
-        : "bg-white/[0.08] hover:bg-white/[0.12] text-white"
-    ]}
-  >
-    {ctaText}
-  </a>
+  {typeformId ? (
+    <button
+      type="button"
+      data-tf-popup={typeformId}
+      data-tf-opacity="100"
+      data-tf-size="80"
+      data-tf-iframe-props={`title=${tier} Waitlist`}
+      data-tf-transitive-search-params
+      class:list={ctaClasses}
+    >
+      {ctaText}
+    </button>
+  ) : (
+    <a
+      href={ctaHref}
+      class:list={ctaClasses}
+    >
+      {ctaText}
+    </a>
+  )}
 </div>
