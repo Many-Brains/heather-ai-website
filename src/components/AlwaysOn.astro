@@ -46,8 +46,46 @@
       <!-- Phone 2: Video call with registered dietitian -->
       <div style="width: 260px;" class="mx-auto md:mx-0">
         <div class="rounded-[3rem] p-[10px] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06),inset_0_0_0_1px_rgba(255,255,255,0.04)]">
-          <div class="rounded-[2.1rem] overflow-hidden bg-black">
+          <div class="rounded-[2.1rem] overflow-hidden bg-black relative">
             <img src="/images/app/human-expert-video.webp" alt="A registered dietitian on a video call with a HeatherAI user" class="block w-full" loading="lazy" />
+
+            <!-- Caller info header -->
+            <div class="absolute top-0 left-0 right-0 pt-4 pb-3 px-4 bg-gradient-to-b from-black/55 to-transparent">
+              <div class="flex items-center gap-1.5">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                <p class="text-[11px] text-white font-semibold leading-tight">Registered Dietitian</p>
+              </div>
+              <p class="text-[10px] text-white/70 mt-0.5">08:42</p>
+            </div>
+
+            <!-- Call controls -->
+            <div class="absolute bottom-0 left-0 right-0 pt-8 pb-5 flex items-center justify-center gap-3 bg-gradient-to-t from-black/70 to-transparent">
+              <!-- Mute mic -->
+              <div class="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </div>
+
+              <!-- End call (red) -->
+              <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center shadow-lg shadow-red-600/30">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" style="transform: rotate(135deg)">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+
+              <!-- Camera -->
+              <div class="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                  <polygon points="23 7 16 12 23 17 23 7"/>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                </svg>
+              </div>
+            </div>
+
           </div>
         </div>
         <p class="mt-4 text-[12px] text-white/35 text-center">
