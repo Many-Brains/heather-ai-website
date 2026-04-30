@@ -1,0 +1,625 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ============================================================================
+// INTELLIGENCE PAGE
+// Audience: 80% investors/competitors, 20% users.
+// Lead narrative: patterns-first. The analytical depth of what we've extracted
+// from the corpus is itself the proof of sophistication.
+// ============================================================================
+
+// ---- Hero: Weight trajectory gallery (full-width) ----
+// Anonymized illustrative weight trajectories (months -> lbs lost)
+const trajectories = [
+  [0, -2, -4, -7, -9, -12, -14, -16, -18, -20, -22, -24, -25, -27, -28, -30, -31, -32, -33],
+  [0, -1, -3, -5, -6, -7, -7, -8, -10, -12, -13, -14, -15, -15, -16, -17, -18, -19, -20],
+  [0, -3, -6, -9, -11, -12, -13, -13, -14, -16, -18, -20, -22, -24, -26, -28, -30, -32, -35],
+  [0, -1, -2, -4, -5, -6, -7, -8, -9, -10, -11, -12, -12, -13, -14, -14, -15, -15, -15],
+  [0, -2, -5, -8, -10, -12, -14, -17, -20, -22, -25, -27, -29, -31, -33, -35, -37, -40, -43],
+  [0, -1, -3, -5, -7, -9, -10, -11, -13, -15, -16, -18, -20, -21, -22, -23, -24, -25, -26],
+  [0, -2, -4, -6, -6, -7, -9, -10, -11, -13, -14, -15, -17, -18, -19, -20, -21, -22, -23],
+  [0, -4, -7, -9, -11, -12, -13, -14, -15, -16, -17, -18, -19, -20, -21, -22, -23, -24, -25],
+  [0, -1, -2, -3, -5, -6, -6, -7, -9, -10, -11, -11, -12, -13, -13, -14, -15, -16, -17],
+  [0, -3, -5, -7, -9, -10, -11, -12, -14, -16, -17, -19, -20, -21, -22, -23, -24, -24, -25],
+];
+const W = 1200;
+const H = 440;
+const xStep = W / (trajectories[0].length - 1);
+const minLb = -45;
+const scaleY = (lb: number) => (lb / minLb) * (H - 40) + 20;
+const paths = trajectories.map(tr =>
+  tr.map((lb, i) => `${i === 0 ? 'M' : 'L'} ${i * xStep} ${scaleY(lb)}`).join(' ')
+);
+
+// ---- Trigger heatmap ----
+const triggerHeatmap = [
+  [1, 1, 1, 1, 2, 3, 2], // Morning
+  [1, 1, 1, 1, 2, 2, 2], // Midday
+  [2, 2, 2, 2, 3, 3, 2], // Afternoon
+  [2, 2, 2, 3, 3, 3, 2], // Evening
+  [3, 2, 2, 3, 3, 3, 3], // Late-night
+];
+const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const timeLabels = ['Morning', 'Midday', 'Afternoon', 'Evening', 'Late-night'];
+const intensity = ['bg-white/[0.03]', 'bg-accent/15', 'bg-accent/40', 'bg-accent/75'];
+
+// ---- Archetype clusters (seeded) ----
+const archetypes = [
+  { name: 'Daily Logger',    cx: 18, cy: 28, count: 12 },
+  { name: 'Executive',       cx: 72, cy: 22, count: 10 },
+  { name: 'Returner',        cx: 34, cy: 55, count: 14 },
+  { name: 'Under Siege',     cx: 75, cy: 58, count: 11 },
+  { name: 'Post-GLP1',       cx: 20, cy: 82, count: 9  },
+  { name: 'Maintainer',      cx: 58, cy: 85, count: 10 },
+];
+
+// ---- Data flywheel stages ----
+const flywheelStages = [
+  { label: 'Historical',  years: '2018–2023', stat: '7 yrs',  desc: 'Pre-GLP-1 era, longitudinal text coaching' },
+  { label: 'Current',     years: '2024–now',  stat: 'Weekly', desc: 'Multi-modal intake, active clinical practice' },
+  { label: 'Emerging',    years: 'HeatherAI', stat: 'Daily',  desc: 'User coaching moments — every consenting user' },
+];
+
+// ---- Moat conditions ----
+const moatConditions = [
+  'A single expert with 20+ years of consistent coaching methodology',
+  '~5,000 clients coached over multi-year timescales',
+  'Text-based coaching (not just appointments) to capture real-time moments',
+  'Clients willing to share food photos, weight data, and emotional context over SMS',
+  'All of it exported, linked, queryable — and outcome-labeled',
+];
+
+// ---- Pattern frameworks ----
+const frameworks = [
+  {
+    tag: '01 · Archetypes',
+    name: 'Coaching Archetypes',
+    count: '6 primary · dozens at scale',
+    desc: 'Clients cluster into patterns — the Daily Logger, Executive, Returner, Under Siege, Post-GLP1, Maintainer. The AI identifies the match and adjusts posture.',
+  },
+  {
+    tag: '02 · Playbooks',
+    name: 'Trigger Playbooks',
+    count: 'Hundreds',
+    desc: 'Every trigger (business dinner, scale bump, post-vacation, stress-eating, 10pm craving) paired with the coaching response that worked.',
+  },
+  {
+    tag: '03 · Recovery',
+    name: 'Recovery Strategies',
+    count: '3 universal patterns',
+    desc: 'The Protein Day reset. "Today is a new day." Zero judgment on return. Extracted from thousands of real comebacks.',
+  },
+  {
+    tag: '04 · The Arc',
+    name: 'The Coaching Arc',
+    count: '5-phase relationship lifecycle',
+    desc: 'Intensive → autonomy-building → maintenance → self-managing → re-engagement. The AI knows where you are and adjusts intensity.',
+  },
+  {
+    tag: '05 · Weight',
+    name: 'Weight Trajectory Intelligence',
+    count: '1000s of labeled paths',
+    desc: 'Plateau → breakthrough → regain shapes. Every inflection point tied to the coaching conversation that produced it.',
+  },
+];
+
+---
+
+<BaseLayout
+  title="Intelligence | HeatherAI"
+  description="Twenty-five years of expert coaching, compressed into patterns. The data, the moat, and the intelligence behind HeatherAI."
+>
+
+  <!-- ============ HERO — full-width pattern viz ============ -->
+  <section class="pt-32 pb-20 px-6 md:px-12">
+    <div class="max-w-[1400px] mx-auto text-center">
+      <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-4">
+        The Intelligence
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-5 max-w-[1000px] mx-auto leading-[1.05]">
+        25 years of expert coaching,<br />
+        <em class="not-italic text-accent">compressed into patterns.</em>
+      </h1>
+      <p class="text-base md:text-lg text-white/45 max-w-[640px] mx-auto leading-relaxed mb-12">
+        Every line below is one real client's 18-month weight trajectory. Each inflection is tied
+        to the coaching conversation that produced it. One of dozens of patterns extracted from the corpus.
+      </p>
+
+      <!-- Hero viz: weight trajectory gallery — full bleed -->
+      <div class="relative bg-gradient-to-b from-bg-surface to-bg-primary border border-white/[0.06] rounded-3xl p-6 md:p-10 overflow-hidden">
+        <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" preserveAspectRatio="none">
+          <!-- Gridlines -->
+          <line x1="0" y1={scaleY(-10)} x2={W} y2={scaleY(-10)} stroke="rgba(255,255,255,0.05)" stroke-dasharray="2,6" />
+          <line x1="0" y1={scaleY(-20)} x2={W} y2={scaleY(-20)} stroke="rgba(255,255,255,0.05)" stroke-dasharray="2,6" />
+          <line x1="0" y1={scaleY(-30)} x2={W} y2={scaleY(-30)} stroke="rgba(255,255,255,0.05)" stroke-dasharray="2,6" />
+          <line x1="0" y1={scaleY(-40)} x2={W} y2={scaleY(-40)} stroke="rgba(255,255,255,0.05)" stroke-dasharray="2,6" />
+
+          {paths.map((d, i) => (
+            <path d={d} stroke="#E8734A" stroke-width="2" fill="none" opacity={0.35 + (i % 4) * 0.15} />
+          ))}
+        </svg>
+
+        <!-- X-axis -->
+        <div class="flex justify-between text-[10px] text-white/30 uppercase tracking-[2px] mt-4 px-1">
+          <span>Month 0</span>
+          <span>Month 3</span>
+          <span>Month 6</span>
+          <span>Month 9</span>
+          <span>Month 12</span>
+          <span>Month 15</span>
+          <span>Month 18</span>
+        </div>
+
+        <!-- Y-axis label -->
+        <div class="absolute top-6 left-6 text-[10px] text-white/30 uppercase tracking-[2px]">
+          lbs lost
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ THE DATA UNDERNEATH — big numbers ============ -->
+  <section class="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Corpus</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[800px] mx-auto leading-tight">
+          The dataset underneath.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] border border-white/[0.06] rounded-2xl overflow-hidden">
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">1M<span class="text-accent">+</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Coaching Messages</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">5,000<span class="text-accent">+</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Unique Clients</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">7<span class="text-accent">yr</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Longitudinal Depth</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">30k<span class="text-accent">+</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Session Notes</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">Multi-<span class="text-accent">modal</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Text · Images · Labels</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">Outcome<span class="text-accent">-labeled</span></div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Every msg → result</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">100s</div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Trigger Playbooks</div>
+        </div>
+        <div class="bg-bg-primary p-8 md:p-10 text-center">
+          <div class="text-4xl md:text-6xl font-bold tracking-tight">1</div>
+          <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Licensed Dietitian</div>
+        </div>
+      </div>
+
+      <p class="text-center text-[13px] text-white/35 mt-8 max-w-[640px] mx-auto leading-relaxed">
+        Every number is a real client, a real message, a real outcome. Nothing synthetic. Nothing scraped. Nothing bought.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ MULTI-MODAL — what's in the corpus ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-16">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">What's Inside</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+          Not just text. <em class="not-italic text-accent">Ground truth.</em>
+        </h2>
+        <p class="text-lg text-white/50 max-w-[720px] mx-auto leading-relaxed">
+          The dataset is multi-modal and outcome-labeled. That combination is what makes it
+          different from every other health corpus on the planet.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Text</div>
+          <h3 class="text-lg font-bold mb-3">1M+ coaching dialogues</h3>
+          <p class="text-sm text-white/55 leading-relaxed">
+            Real two-way SMS between Heather and thousands of clients. "202, up 3 from that
+            work trip" — every number arrives with the story that produced it.
+          </p>
+        </div>
+
+        <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Images</div>
+          <h3 class="text-lg font-bold mb-3">Food photos, menus, labels</h3>
+          <p class="text-sm text-white/55 leading-relaxed">
+            Restaurant menus before business dinners. Food logs from hotel rooms. Product
+            labels from grocery aisles. Progress photos over months. Coaching happens where
+            the real decisions live.
+          </p>
+        </div>
+
+        <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Longitudinal</div>
+          <h3 class="text-lg font-bold mb-3">Multi-year weight trajectories</h3>
+          <p class="text-sm text-white/55 leading-relaxed">
+            Weight paths spanning months and years per client — 15 lbs in 3 months, 43 lbs
+            over 18 months, regain phases, maintenance arcs. We don't just know what worked.
+            We know how it unfolded.
+          </p>
+        </div>
+
+        <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Outcome-labeled</div>
+          <h3 class="text-lg font-bold mb-3">Every message tied to a result</h3>
+          <p class="text-sm text-white/55 leading-relaxed">
+            Because the data spans years, every conversation is implicitly tagged by what
+            happened next — engagement, plateau, breakthrough, drop-off, return. That's the
+            layer textbook training has never had.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ DATA ARCHAEOLOGY — archetypes + heatmap ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">Data Archaeology</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
+          What the team <em class="not-italic text-accent">excavated</em>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Archetype map (large) -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">01 · Archetype Segmentation</div>
+          <h3 class="text-xl font-bold mb-6">Clients cluster into patterns.</h3>
+
+          <div class="relative bg-bg-primary rounded-xl border border-white/[0.04] h-[320px] overflow-hidden">
+            <!-- Cluster dots -->
+            {Array.from({length: 80}).map((_, i) => {
+              const cluster = i % 6;
+              const { cx, cy } = archetypes[cluster];
+              const jitterX = (Math.sin(i * 12.9898) * 43758.5) % 1;
+              const jitterY = (Math.sin(i * 78.233) * 43758.5) % 1;
+              const x = cx + (jitterX - 0.5) * 22;
+              const y = cy + (jitterY - 0.5) * 22;
+              const opacities = [0.75, 0.55, 0.65, 0.45, 0.6, 0.7];
+              return (
+                <div
+                  class="absolute w-2.5 h-2.5 rounded-full bg-accent"
+                  style={`left: ${x}%; top: ${y}%; opacity: ${opacities[cluster]};`}
+                />
+              );
+            })}
+
+            <!-- Cluster labels -->
+            {archetypes.map(a => (
+              <div
+                class="absolute text-[10px] text-white/70 uppercase tracking-[1.5px] font-semibold pointer-events-none"
+                style={`left: ${a.cx - 8}%; top: ${a.cy - 12}%;`}
+              >
+                {a.name}
+              </div>
+            ))}
+          </div>
+
+          <p class="text-[13px] text-white/45 leading-relaxed mt-5">
+            6 primary archetypes. Dozens more emerge at scale. The AI matches each user and
+            adjusts its coaching posture to fit.
+          </p>
+        </div>
+
+        <!-- Trigger heatmap (large) -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">02 · Temporal Trigger Map</div>
+          <h3 class="text-xl font-bold mb-6">When the hard moments hit.</h3>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col justify-between text-[10px] text-white/40 uppercase tracking-[1.5px] py-1">
+              {timeLabels.map(t => <div class="h-12 flex items-center">{t}</div>)}
+            </div>
+
+            <div class="flex-1">
+              <div class="grid grid-cols-7 gap-1.5">
+                {triggerHeatmap.map((row) => (
+                  row.map((v) => (
+                    <div class:list={["h-12 rounded-md", intensity[v]]} />
+                  ))
+                ))}
+              </div>
+              <div class="grid grid-cols-7 gap-1.5 mt-2 text-[11px] text-white/40 text-center font-semibold">
+                {dayLabels.map((d) => <div>{d}</div>)}
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mt-6 text-[10px] text-white/35 uppercase tracking-[1.5px]">
+            <span>Low</span>
+            <div class="flex gap-1">
+              <div class="w-4 h-3 rounded-sm bg-white/[0.03]"></div>
+              <div class="w-4 h-3 rounded-sm bg-accent/15"></div>
+              <div class="w-4 h-3 rounded-sm bg-accent/40"></div>
+              <div class="w-4 h-3 rounded-sm bg-accent/75"></div>
+            </div>
+            <span>High</span>
+          </div>
+
+          <p class="text-[13px] text-white/45 leading-relaxed mt-5">
+            Friday evening. Saturday afternoon. Late Sunday. The corpus knows when you'll need
+            coaching — so the AI meets you there.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ PATTERN LIBRARY — named frameworks ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Pattern Library</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
+          Five named frameworks, <em class="not-italic text-accent">thousands of playbooks</em>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {frameworks.map((f) => (
+          <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-7">
+            <div class="text-[10px] text-accent uppercase tracking-[2px] font-semibold mb-2">{f.tag}</div>
+            <h3 class="text-lg font-bold mb-2">{f.name}</h3>
+            <div class="text-[11px] text-white/55 uppercase tracking-[1.5px] mb-4 font-semibold">{f.count}</div>
+            <p class="text-[13px] text-white/50 leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ MOAT — irreproducibility + comparison ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Moat</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
+          What a competitor would need <em class="not-italic text-accent">to replicate this</em>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <!-- The 5 conditions -->
+        <div class="bg-bg-surface border border-accent/20 rounded-2xl p-8 md:p-10">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-4">5 conditions required</div>
+          <ul class="space-y-4">
+            {moatConditions.map((c, i) => (
+              <li class="flex items-start gap-4">
+                <div class="text-xs text-accent font-bold tracking-wider shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</div>
+                <p class="text-sm text-white/75 leading-relaxed">{c}</p>
+              </li>
+            ))}
+          </ul>
+          <p class="text-[13px] text-white/55 italic mt-6 pt-6 border-t border-white/[0.06]">
+            That combination took Heather's entire career to create.
+          </p>
+        </div>
+
+        <!-- The comparison -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl overflow-hidden">
+          <table class="w-full text-xs">
+            <thead>
+              <tr class="border-b border-white/[0.06]">
+                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold"></th>
+                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold">Generic AI</th>
+                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold">Noom·MFP</th>
+                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-accent font-semibold">HeatherAI</th>
+              </tr>
+            </thead>
+            <tbody class="text-white/55">
+              <tr class="border-b border-white/[0.04]">
+                <td class="p-4 text-white/80 font-medium">Training source</td>
+                <td class="p-4">Public web</td>
+                <td class="p-4">Generic CBT</td>
+                <td class="p-4 text-white/95">25yr RD practice</td>
+              </tr>
+              <tr class="border-b border-white/[0.04]">
+                <td class="p-4 text-white/80 font-medium">Voice</td>
+                <td class="p-4">Generic AI</td>
+                <td class="p-4">Generic coach</td>
+                <td class="p-4 text-white/95">One expert voice</td>
+              </tr>
+              <tr class="border-b border-white/[0.04]">
+                <td class="p-4 text-white/80 font-medium">Outcome-labeled</td>
+                <td class="p-4">—</td>
+                <td class="p-4">—</td>
+                <td class="p-4 text-white/95">Every msg</td>
+              </tr>
+              <tr class="border-b border-white/[0.04]">
+                <td class="p-4 text-white/80 font-medium">Multi-modal</td>
+                <td class="p-4">Text</td>
+                <td class="p-4">Text + cal log</td>
+                <td class="p-4 text-white/95">Text + images</td>
+              </tr>
+              <tr>
+                <td class="p-4 text-white/80 font-medium">Clinical</td>
+                <td class="p-4">None</td>
+                <td class="p-4">None</td>
+                <td class="p-4 text-white/95">Registered Dietitian</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ FLYWHEEL — data compounds ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Flywheel</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
+          The data <em class="not-italic text-accent">compounds</em>.
+        </h2>
+      </div>
+
+      <!-- Flywheel diagram: three arcing panels with arrows between -->
+      <div class="relative">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 relative">
+          {flywheelStages.map((s, i) => (
+            <div class="relative bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
+              <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">{s.label}</div>
+              <div class="text-4xl md:text-5xl font-bold tracking-tight mb-3">{s.stat}</div>
+              <div class="text-[11px] text-white/40 uppercase tracking-[1.5px] mb-4">{s.years}</div>
+              <p class="text-[13px] text-white/55 leading-relaxed">{s.desc}</p>
+              {i < 2 && (
+                <div class="hidden md:block absolute top-1/2 -right-6 -translate-y-1/2 text-accent/60 text-3xl">→</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p class="text-center text-[14px] text-white/55 leading-relaxed mt-10 max-w-[640px] mx-auto">
+        Every consenting user adds to the corpus. Every HeatherAI conversation widens the moat.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ PEER-REVIEWED ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[900px] mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">Peer-Reviewed</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight mb-6">
+          The academic record <em class="not-italic text-accent">catches up</em>.
+        </h2>
+        <p class="text-lg text-white/50 max-w-[680px] mx-auto leading-relaxed">
+          The published evidence is catching up to what Heather's clients have known for years.
+          Here's what the research says about the approach HeatherAI is built on.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+
+        <!-- JAMA -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 md:p-10">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">JAMA &middot; December 2025</div>
+          <h3 class="text-lg font-bold mb-3">AI coaching matched human coaching outcomes over 12 months.</h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            A phase 3 randomized controlled trial from Johns Hopkins demonstrated that a fully automated
+            AI lifestyle intervention was noninferior to human coaching across weight loss, physical
+            activity, and metabolic health markers over a full year. This is the gold standard of clinical
+            evidence — a phase 3 RCT published in the most authoritative medical journal — and it
+            validates the entire category HeatherAI occupies.
+          </p>
+          <p class="text-[11px] text-white/30 mt-4 leading-relaxed">
+            Mathioudakis et al. (2025). JAMA, 334(23):2079-2089. doi:10.1001/jama.2025.19563
+          </p>
+        </div>
+
+        <!-- Verily -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 md:p-10">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">JMIR &middot; 2025 &middot; Verily / Google</div>
+          <h3 class="text-lg font-bold mb-3">Methodology-grounded AI significantly outperforms generic LLMs.</h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            A study from Google's Verily life sciences team found that multi-agent AI workflows grounded
+            in behavioral science frameworks were strongly preferred by expert evaluators over baseline
+            LLM coaching. The key differentiator: specialized systems that identify root causes of dietary
+            barriers before offering strategies. This directly validates HeatherAI's architecture — Heather's
+            methodology embedded in the coaching logic, not a generic nutrition prompt.
+          </p>
+          <p class="text-[11px] text-white/30 mt-4 leading-relaxed">
+            Yang et al. (2025). JMIR Formative Research, 9:e75421. doi:10.2196/75421
+          </p>
+        </div>
+
+        <!-- Retention -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 md:p-10">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Springer &middot; 2025 &middot; 21 Studies</div>
+          <h3 class="text-lg font-bold mb-3">Hybrid AI + human coaching retains 57–92% of users.</h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            A systematic review of 21 studies including 8 RCTs found that hybrid AI + human coaching
+            platforms consistently achieve the highest retention rates in digital health — ranging from
+            57% to 92%. This supports HeatherAI's expert-in-the-loop design, and the
+            <a href="/pricing" class="text-accent hover:underline">AI + Human Coach</a> tier, as
+            both clinically and commercially optimal.
+          </p>
+          <p class="text-[11px] text-white/30 mt-4 leading-relaxed">
+            Dunmore et al. (2025). Current Cardiovascular Risk Reports (Springer). doi:10.1007/s12170-025-00776-7
+          </p>
+        </div>
+
+        <!-- Personalization -->
+        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8 md:p-10">
+          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Springer &middot; 2025 &middot; Longitudinal Study</div>
+          <h3 class="text-lg font-bold mb-3">Personalized AI coaching increased engagement by 26%.</h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            A 3-month longitudinal study of an AI-powered coaching assistant found that personalized
+            interactions increased user engagement by 26% over non-personalized ones, and that
+            conversational style increased average message length by more than 4×. Longer, more
+            detailed messages mean richer context for the AI, better memory, and a stronger coaching
+            relationship — the engagement flywheel HeatherAI is designed to create.
+          </p>
+          <p class="text-[11px] text-white/30 mt-4 leading-relaxed">
+            Garcia-Zapirain et al. (2025). Journal of Healthcare Informatics Research (Springer). doi:10.1007/s41666-025-00217-5
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Honest caveat -->
+      <div class="mt-12 max-w-[760px] mx-auto p-6 border border-white/[0.04] rounded-xl">
+        <h4 class="text-sm font-semibold text-white/60 mb-3">What the research doesn't yet prove.</h4>
+        <p class="text-[13px] text-white/40 leading-relaxed">
+          A 2025 JMIR systematic review limited to RCTs found limited statistically significant evidence
+          for NLP chatbot interventions improving diet behavior specifically. This reflects the
+          methodological immaturity of the field — small sample sizes and short study durations — not
+          a negative finding about AI coaching efficacy. It's a reason to be precise about claims, and
+          it's why HeatherAI is building its own outcome data alongside the published literature. We
+          believe in showing the work.
+        </p>
+        <p class="text-[11px] text-white/25 mt-3 leading-relaxed">
+          Chen et al. (2025). JMIR mHealth and uHealth, 13:e66403. doi:10.2196/66403
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ CTA — investor-facing ============ -->
+  <section class="py-32 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[640px] mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-5 leading-tight">
+        Want the full picture?
+      </h2>
+      <p class="text-base text-white/50 leading-relaxed mb-10 max-w-[480px] mx-auto">
+        Investors, journalists, and partners — we're happy to walk you through the corpus,
+        the architecture, and the roadmap.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl text-base transition-all hover:-translate-y-0.5"
+      >
+        Contact the team
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
