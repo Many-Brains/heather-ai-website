@@ -3,6 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PricingCard from '../components/PricingCard.astro';
 import FaqItem from '../components/FaqItem.astro';
 import CtaSection from '../components/CtaSection.astro';
+
+// Stripe Payment Link (test mode — swap to prod URL when ready).
+// Its success_url in Stripe is configured to redirect to ONBOARDING_TYPEFORM_URL
+// with ?stripe_session_id={CHECKOUT_SESSION_ID} appended.
+const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/test_28E28qbpa3nQ4hRcQR7N600';
+const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
 ---
 
 <BaseLayout title="Pricing | HeatherAI" description="Simple pricing for AI nutrition coaching. Start free with meal logging.">
@@ -48,7 +54,7 @@ import CtaSection from '../components/CtaSection.astro';
           'Full meal history',
         ]}
         ctaText="Get Started"
-        ctaHref="/coming-soon"
+        ctaHref={ONBOARDING_TYPEFORM_URL}
       />
 
       <PricingCard
@@ -67,7 +73,7 @@ import CtaSection from '../components/CtaSection.astro';
           'Personalized video coaching from HeatherAI',
         ]}
         ctaText="Start Coaching"
-        ctaHref="/coming-soon"
+        ctaHref={STRIPE_CHECKOUT_URL}
         highlighted={true}
       />
 
