@@ -1,6 +1,7 @@
 ---
 interface Props {
   headline?: string;
+  headlineHtml?: string;
   subline?: string;
   ctaText?: string;
   ctaHref?: string;
@@ -9,6 +10,7 @@ interface Props {
 
 const {
   headline = 'Start with free meal logging.\nUpgrade when you\'re ready.',
+  headlineHtml,
   subline = 'No credit card required. No commitment. Just better nutrition.',
   ctaText = 'Get Started Free',
   ctaHref = '/pricing',
@@ -19,13 +21,17 @@ const headlineLines = headline.split('\n');
 ---
 
 <section class="py-36 px-6 md:px-12 border-t border-white/[0.06] text-center">
-  <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-    {headlineLines.map((line: string, i: number) => (
-      <Fragment>
-        {line}{i < headlineLines.length - 1 && <br />}
-      </Fragment>
-    ))}
-  </h2>
+  {headlineHtml ? (
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4" set:html={headlineHtml}></h2>
+  ) : (
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+      {headlineLines.map((line: string, i: number) => (
+        <Fragment>
+          {line}{i < headlineLines.length - 1 && <br />}
+        </Fragment>
+      ))}
+    </h2>
+  )}
   <p class="text-lg text-white/45 mb-10">{subline}</p>
   <a
     href={ctaHref}
