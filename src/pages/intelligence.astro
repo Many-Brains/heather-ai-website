@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PatternNetwork from '../components/PatternNetwork.astro';
 
 // ============================================================================
 // INTELLIGENCE PAGE
@@ -58,15 +59,6 @@ const flywheelStages = [
   { label: 'Historical',  years: '2007–present', stat: '2007+',      desc: "Text coaching archive going back to 2007 — pre-GLP-1 era, progressively loaded into the corpus" },
   { label: 'Current',     years: 'Active',       stat: 'Daily',      desc: "Heather's active practice — daily text coaching with clients, multi-modal intake" },
   { label: 'Emerging',    years: 'HeatherAI',    stat: 'Continuous', desc: 'Every HeatherAI user — coaching moments compound the corpus in real time' },
-];
-
-// ---- Moat conditions ----
-const moatConditions = [
-  'A single expert with 20+ years of consistent coaching methodology',
-  '~5,000 clients coached over multi-year timescales',
-  'Text-based coaching (not just appointments) to capture real-time moments',
-  'Clients willing to share food photos, weight data, and emotional context over SMS',
-  'All of it exported, linked, queryable — and outcome-labeled',
 ];
 
 // ---- Pattern frameworks ----
@@ -261,6 +253,25 @@ const frameworks = [
   </section>
 
 
+  <!-- ============ NETWORK — moments to playbooks (animated) ============ -->
+  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Mapping</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight mb-6">
+          From moments <em class="not-italic text-accent">to playbooks</em>.
+        </h2>
+        <p class="text-lg text-white/50 max-w-[680px] mx-auto leading-relaxed">
+          One real moment at a time. Pattern matching extracted from 1M+ coaching conversations,
+          mapped to the play that worked.
+        </p>
+      </div>
+
+      <PatternNetwork />
+    </div>
+  </section>
+
+
   <!-- ============ DATA ARCHAEOLOGY — archetypes + heatmap ============ -->
   <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
     <div class="max-w-[1200px] mx-auto">
@@ -378,83 +389,6 @@ const frameworks = [
             <p class="text-[13px] text-white/50 leading-relaxed">{f.desc}</p>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ MOAT — irreproducibility + comparison ============ -->
-  <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-14">
-        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Moat</div>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
-          What a competitor would need <em class="not-italic text-accent">to replicate this</em>.
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <!-- The 5 conditions -->
-        <div class="bg-bg-surface border border-accent/20 rounded-2xl p-8 md:p-10">
-          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-4">5 conditions required</div>
-          <ul class="space-y-4">
-            {moatConditions.map((c, i) => (
-              <li class="flex items-start gap-4">
-                <div class="text-xs text-accent font-bold tracking-wider shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</div>
-                <p class="text-sm text-white/75 leading-relaxed">{c}</p>
-              </li>
-            ))}
-          </ul>
-          <p class="text-[13px] text-white/55 italic mt-6 pt-6 border-t border-white/[0.06]">
-            That combination took Heather's entire career to create.
-          </p>
-        </div>
-
-        <!-- The comparison -->
-        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl overflow-hidden">
-          <table class="w-full text-xs">
-            <thead>
-              <tr class="border-b border-white/[0.06]">
-                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold"></th>
-                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold">Generic AI</th>
-                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-white/40 font-semibold">Noom·MFP</th>
-                <th class="text-left p-4 text-[10px] uppercase tracking-[2px] text-accent font-semibold">HeatherAI</th>
-              </tr>
-            </thead>
-            <tbody class="text-white/55">
-              <tr class="border-b border-white/[0.04]">
-                <td class="p-4 text-white/80 font-medium">Training source</td>
-                <td class="p-4">Public web</td>
-                <td class="p-4">Generic CBT</td>
-                <td class="p-4 text-white/95">20yr RD practice</td>
-              </tr>
-              <tr class="border-b border-white/[0.04]">
-                <td class="p-4 text-white/80 font-medium">Voice</td>
-                <td class="p-4">Generic AI</td>
-                <td class="p-4">Generic coach</td>
-                <td class="p-4 text-white/95">One expert voice</td>
-              </tr>
-              <tr class="border-b border-white/[0.04]">
-                <td class="p-4 text-white/80 font-medium">Outcome-labeled</td>
-                <td class="p-4">—</td>
-                <td class="p-4">—</td>
-                <td class="p-4 text-white/95">Every msg</td>
-              </tr>
-              <tr class="border-b border-white/[0.04]">
-                <td class="p-4 text-white/80 font-medium">Multi-modal</td>
-                <td class="p-4">Text</td>
-                <td class="p-4">Text + cal log</td>
-                <td class="p-4 text-white/95">Text + images</td>
-              </tr>
-              <tr>
-                <td class="p-4 text-white/80 font-medium">Clinical</td>
-                <td class="p-4">None</td>
-                <td class="p-4">None</td>
-                <td class="p-4 text-white/95">Registered Dietitian</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </section>

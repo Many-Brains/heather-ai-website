@@ -1,0 +1,361 @@
+---
+// PatternNetwork.astro
+// Three-layer visualization mapping real client moments → pattern clusters → coaching plays.
+// Animation: a moment activates, edges route activation through the matching pattern to plays.
+
+interface NodeT { id: string; label: string }
+
+const moments: NodeT[] = [
+  { id: 'm1',  label: '9:47pm, kitchen' },
+  { id: 'm2',  label: 'Steakhouse Wed' },
+  { id: 'm3',  label: 'Hotel buffet' },
+  { id: 'm4',  label: 'GLP-1, hunger gone' },
+  { id: 'm5',  label: 'Deadline week' },
+  { id: 'm6',  label: "Kid's birthday" },
+  { id: 'm7',  label: 'Airport day' },
+  { id: 'm8',  label: 'Wine w/ friends' },
+  { id: 'm9',  label: 'Stuck at 165' },
+  { id: 'm10', label: 'Skipped breakfast' },
+];
+
+const patterns: NodeT[] = [
+  { id: 'p1', label: 'Late-night triggers' },
+  { id: 'p2', label: 'Social pressure' },
+  { id: 'p3', label: 'Travel disruption' },
+  { id: 'p4', label: 'GLP-1 transitions' },
+  { id: 'p5', label: 'Plateau dynamics' },
+  { id: 'p6', label: 'Restriction backlash' },
+];
+
+const plays: NodeT[] = [
+  { id: 'r1', label: 'Pre-meal scout' },
+  { id: 'r2', label: 'Order-ahead' },
+  { id: 'r3', label: "Replace, don't restrict" },
+  { id: 'r4', label: 'Protein priority' },
+  { id: 'r5', label: "Reset, don't restart" },
+  { id: 'r6', label: 'If-then planning' },
+];
+
+// Edges
+const m2p: Array<[string, string]> = [
+  ['m1', 'p1'], ['m1', 'p6'],
+  ['m2', 'p2'],
+  ['m3', 'p3'], ['m3', 'p2'],
+  ['m4', 'p4'],
+  ['m5', 'p1'], ['m5', 'p6'],
+  ['m6', 'p2'],
+  ['m7', 'p3'],
+  ['m8', 'p2'],
+  ['m9', 'p5'],
+  ['m10', 'p6'], ['m10', 'p1'],
+];
+
+const p2r: Array<[string, string]> = [
+  ['p1', 'r3'], ['p1', 'r6'],
+  ['p2', 'r1'], ['p2', 'r2'],
+  ['p3', 'r6'], ['p3', 'r1'],
+  ['p4', 'r4'], ['p4', 'r3'],
+  ['p5', 'r5'], ['p5', 'r4'],
+  ['p6', 'r5'], ['p6', 'r3'],
+];
+
+// Layout
+const VB_W = 1100;
+const VB_H = 720;
+const COL_M_X = 360;
+const COL_P_X = 620;
+const COL_R_X = 880;
+
+const mY = (i: number) => 60 + i * ((VB_H - 120) / (moments.length - 1));
+const pY = (i: number) => 100 + i * ((VB_H - 200) / (patterns.length - 1));
+const rY = (i: number) => 100 + i * ((VB_H - 200) / (plays.length - 1));
+
+const momentPos: Record<string, {x: number, y: number}> = {};
+moments.forEach((m, i) => { momentPos[m.id] = { x: COL_M_X, y: mY(i) }; });
+
+const patternPos: Record<string, {x: number, y: number}> = {};
+patterns.forEach((p, i) => { patternPos[p.id] = { x: COL_P_X, y: pY(i) }; });
+
+const playPos: Record<string, {x: number, y: number}> = {};
+plays.forEach((r, i) => { playPos[r.id] = { x: COL_R_X, y: rY(i) }; });
+
+// Smooth S-curve path between two points
+const curve = (x1: number, y1: number, x2: number, y2: number) => {
+  const dx = x2 - x1;
+  const cp1x = x1 + dx * 0.5;
+  const cp2x = x2 - dx * 0.5;
+  return `M ${x1} ${y1} C ${cp1x} ${y1}, ${cp2x} ${y2}, ${x2} ${y2}`;
+};
+
+const edgesMP = m2p.map(([m, p]) => ({
+  id: `${m}-${p}`,
+  from: m, to: p,
+  d: curve(momentPos[m].x, momentPos[m].y, patternPos[p].x, patternPos[p].y),
+}));
+
+const edgesPR = p2r.map(([p, r]) => ({
+  id: `${p}-${r}`,
+  from: p, to: r,
+  d: curve(patternPos[p].x, patternPos[p].y, playPos[r].x, playPos[r].y),
+}));
+---
+
+<div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-6 md:p-8 overflow-hidden">
+
+  <!-- Column legend -->
+  <div class="grid grid-cols-3 gap-4 mb-4 text-center">
+    <div>
+      <div class="text-[10px] text-accent uppercase tracking-[2px] font-semibold">Real moments</div>
+      <div class="text-[11px] text-white/35 mt-1">de-identified client texts</div>
+    </div>
+    <div>
+      <div class="text-[10px] text-accent uppercase tracking-[2px] font-semibold">Pattern clusters</div>
+      <div class="text-[11px] text-white/35 mt-1">extracted from 1M+ messages</div>
+    </div>
+    <div>
+      <div class="text-[10px] text-accent uppercase tracking-[2px] font-semibold">Coaching plays</div>
+      <div class="text-[11px] text-white/35 mt-1">Heather's response library</div>
+    </div>
+  </div>
+
+  <div class="relative">
+    <svg viewBox={`0 0 ${VB_W} ${VB_H}`} class="w-full h-auto" id="pattern-network" aria-label="Network mapping moments to patterns to coaching plays">
+
+      <!-- Edges: moments -> patterns -->
+      <g>
+        {edgesMP.map(e => (
+          <path
+            class="edge"
+            data-edge-id={e.id}
+            data-from={e.from}
+            data-to={e.to}
+            d={e.d}
+            fill="none"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="1"
+          />
+        ))}
+      </g>
+
+      <!-- Edges: patterns -> plays -->
+      <g>
+        {edgesPR.map(e => (
+          <path
+            class="edge"
+            data-edge-id={e.id}
+            data-from={e.from}
+            data-to={e.to}
+            d={e.d}
+            fill="none"
+            stroke="rgba(255,255,255,0.08)"
+            stroke-width="1"
+          />
+        ))}
+      </g>
+
+      <!-- Moments (left) -->
+      <g>
+        {moments.map((m) => (
+          <g class="node" data-node-id={m.id} data-layer="moment">
+            <circle cx={momentPos[m.id].x} cy={momentPos[m.id].y} r="4" fill="#E8734A" opacity="0.55" />
+            <text
+              x={momentPos[m.id].x - 14}
+              y={momentPos[m.id].y + 4}
+              text-anchor="end"
+              fill="rgba(255,255,255,0.55)"
+              style="font-size: 14px;"
+            >{m.label}</text>
+          </g>
+        ))}
+      </g>
+
+      <!-- Patterns (middle, larger nodes) -->
+      <g>
+        {patterns.map((p) => (
+          <g class="node" data-node-id={p.id} data-layer="pattern">
+            <circle cx={patternPos[p.id].x} cy={patternPos[p.id].y} r="14" fill="none" stroke="#E8734A" stroke-width="1" opacity="0.25" />
+            <circle cx={patternPos[p.id].x} cy={patternPos[p.id].y} r="9" fill="#E8734A" opacity="0.85" />
+            <text
+              x={patternPos[p.id].x}
+              y={patternPos[p.id].y - 24}
+              text-anchor="middle"
+              fill="rgba(255,255,255,0.85)"
+              style="font-size: 15px; font-weight: 600;"
+            >{p.label}</text>
+          </g>
+        ))}
+      </g>
+
+      <!-- Plays (right) -->
+      <g>
+        {plays.map((r) => (
+          <g class="node" data-node-id={r.id} data-layer="play">
+            <circle cx={playPos[r.id].x} cy={playPos[r.id].y} r="6" fill="#E8734A" opacity="0.7" />
+            <text
+              x={playPos[r.id].x + 16}
+              y={playPos[r.id].y + 4}
+              text-anchor="start"
+              fill="rgba(255,255,255,0.7)"
+              style="font-size: 14px;"
+            >{r.label}</text>
+          </g>
+        ))}
+      </g>
+
+      <!-- Column labels (very faint) -->
+      <text x={COL_M_X} y="20" text-anchor="end" fill="rgba(255,255,255,0.25)" style="font-size: 10px; letter-spacing: 2px; font-weight: 600;">INPUT</text>
+      <text x={COL_P_X} y="20" text-anchor="middle" fill="rgba(255,255,255,0.25)" style="font-size: 10px; letter-spacing: 2px; font-weight: 600;">PATTERN</text>
+      <text x={COL_R_X} y="20" text-anchor="start" fill="rgba(255,255,255,0.25)" style="font-size: 10px; letter-spacing: 2px; font-weight: 600;">RESPONSE</text>
+    </svg>
+  </div>
+
+  <p class="text-[12px] text-white/40 leading-relaxed mt-4 text-center max-w-[640px] mx-auto">
+    A real moment fires. The network routes it to the matching pattern — extracted from 1M+ coaching conversations —
+    and back out as the play that worked. Continuously, in real time.
+  </p>
+</div>
+
+<style>
+  #pattern-network .edge {
+    transition: stroke 0.5s ease, stroke-width 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+  }
+  #pattern-network .edge.active {
+    stroke: #E8734A;
+    stroke-width: 1.8;
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(232, 115, 74, 0.7));
+  }
+
+  #pattern-network .node circle {
+    transition: fill 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  }
+  #pattern-network .node.active circle {
+    filter: drop-shadow(0 0 8px rgba(232, 115, 74, 0.9));
+  }
+  #pattern-network .node.active circle:last-of-type {
+    fill: #FF8E5A;
+    opacity: 1;
+  }
+  #pattern-network .node.active text {
+    fill: rgba(255, 255, 255, 0.98);
+  }
+  #pattern-network .node text {
+    transition: fill 0.4s ease;
+  }
+
+  /* Ambient pulse on the moment dots — corpus is "alive" */
+  @keyframes ambientPulse {
+    0%, 100% { opacity: 0.45; }
+    50%      { opacity: 0.75; }
+  }
+  #pattern-network .node[data-layer="moment"]:not(.active) circle {
+    animation: ambientPulse 3.6s ease-in-out infinite;
+  }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(2)  circle { animation-delay: 0.3s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(3)  circle { animation-delay: 0.7s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(4)  circle { animation-delay: 1.1s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(5)  circle { animation-delay: 1.5s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(6)  circle { animation-delay: 1.9s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(7)  circle { animation-delay: 2.3s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(8)  circle { animation-delay: 2.7s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(9)  circle { animation-delay: 3.1s; }
+  #pattern-network .node[data-layer="moment"]:nth-of-type(10) circle { animation-delay: 3.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pattern-network .node[data-layer="moment"] circle { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const svg = document.getElementById('pattern-network');
+    if (!svg) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const moments = ['m1','m2','m3','m4','m5','m6','m7','m8','m9','m10'];
+    const m2p = [
+      ['m1','p1'],['m1','p6'],
+      ['m2','p2'],
+      ['m3','p3'],['m3','p2'],
+      ['m4','p4'],
+      ['m5','p1'],['m5','p6'],
+      ['m6','p2'],
+      ['m7','p3'],
+      ['m8','p2'],
+      ['m9','p5'],
+      ['m10','p6'],['m10','p1']
+    ];
+    const p2r = [
+      ['p1','r3'],['p1','r6'],
+      ['p2','r1'],['p2','r2'],
+      ['p3','r6'],['p3','r1'],
+      ['p4','r4'],['p4','r3'],
+      ['p5','r5'],['p5','r4'],
+      ['p6','r5'],['p6','r3']
+    ];
+
+    function setNodeActive(id, on) {
+      const n = svg.querySelector('[data-node-id="' + id + '"]');
+      if (n) n.classList.toggle('active', on);
+    }
+    function setEdgeActive(from, to, on) {
+      const e = svg.querySelector('[data-edge-id="' + from + '-' + to + '"]');
+      if (e) e.classList.toggle('active', on);
+    }
+    function reset() {
+      svg.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+    }
+
+    let last = null;
+    let timeouts = [];
+    function clearTimeouts() {
+      timeouts.forEach(t => clearTimeout(t));
+      timeouts = [];
+    }
+    function delay(ms, fn) { timeouts.push(setTimeout(fn, ms)); }
+
+    function tick() {
+      clearTimeouts();
+      reset();
+
+      let mId;
+      do { mId = moments[Math.floor(Math.random() * moments.length)]; } while (mId === last);
+      last = mId;
+
+      const matchedPatterns = m2p.filter(e => e[0] === mId).map(e => e[1]);
+      const matchedPlaysSet = new Set();
+      p2r.forEach(e => { if (matchedPatterns.indexOf(e[0]) >= 0) matchedPlaysSet.add(e[1]); });
+      const matchedPlays = Array.from(matchedPlaysSet);
+
+      // 1) Moment fires
+      setNodeActive(mId, true);
+
+      // 2) Edges to pattern light up
+      delay(280, () => matchedPatterns.forEach(p => setEdgeActive(mId, p, true)));
+
+      // 3) Patterns activate
+      delay(720, () => matchedPatterns.forEach(p => setNodeActive(p, true)));
+
+      // 4) Edges from patterns to plays
+      delay(1100, () => {
+        matchedPatterns.forEach(p => {
+          p2r.forEach(e => { if (e[0] === p) setEdgeActive(e[0], e[1], true); });
+        });
+      });
+
+      // 5) Plays activate
+      delay(1520, () => matchedPlays.forEach(r => setNodeActive(r, true)));
+
+      // 6) Hold, then re-fire
+      delay(3900, tick);
+    }
+
+    // Pause when tab is hidden so we don't burn cycles
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { clearTimeouts(); reset(); }
+      else { delay(400, tick); }
+    });
+
+    delay(800, tick);
+  })();
+</script>
