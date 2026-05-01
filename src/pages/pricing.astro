@@ -50,6 +50,7 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
         ]}
         ctaText="Get Started"
         ctaHref={ONBOARDING_TYPEFORM_URL}
+        confirmId="free-confirm-dialog"
       />
 
       <PricingCard
@@ -128,6 +129,82 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
     subline="Try meal logging at no cost. Upgrade when you're ready for coaching."
     showPricingLink={false}
   />
+
+  <!-- Free-tier confirmation dialog -->
+  <dialog
+    id="free-confirm-dialog"
+    class="bg-bg-surface text-white border border-white/[0.08] rounded-2xl p-0 max-w-[480px] w-[calc(100%-2rem)] backdrop:bg-black/70 backdrop:backdrop-blur-sm open:animate-[fadeIn_0.15s_ease-out]"
+  >
+    <div class="relative p-8">
+      <button
+        type="button"
+        id="free-confirm-close"
+        aria-label="Close"
+        class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-white/50 hover:text-white/90 transition-colors"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 3 L13 13 M13 3 L3 13" />
+        </svg>
+      </button>
+
+      <h3 class="text-xl font-bold tracking-tight mb-4 pr-8">
+        Just so we're clear — Free is meal logging only.
+      </h3>
+
+      <p class="text-sm text-white/70 leading-relaxed mb-3">
+        The Free plan is a tracker: log meals, get macros, see history.
+        <strong class="text-white/90">It does not include AI coaching, meal plans, menu analysis, or personalized guidance.</strong>
+      </p>
+
+      <p class="text-sm text-white/70 leading-relaxed mb-6">
+        If you're looking for a coach, you'll want <strong class="text-white/90">AI Coaching ($29/mo)</strong>.
+      </p>
+
+      <div class="flex flex-col gap-3">
+        <button
+          type="button"
+          id="free-confirm-continue"
+          class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-white/[0.08] hover:bg-white/[0.12] text-white cursor-pointer"
+        >
+          I understand — continue to Free
+        </button>
+        <a
+          href={STRIPE_CHECKOUT_URL}
+          class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-accent hover:bg-accent-hover text-white"
+        >
+          Get AI Coaching instead →
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <script is:inline>
+    (function () {
+      const dialog = document.getElementById('free-confirm-dialog');
+      if (!dialog) return;
+      const continueBtn = document.getElementById('free-confirm-continue');
+      const closeBtn = document.getElementById('free-confirm-close');
+      let pendingHref = null;
+
+      document.querySelectorAll('[data-confirm-id="free-confirm-dialog"]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          pendingHref = el.getAttribute('href');
+          dialog.showModal();
+        });
+      });
+
+      continueBtn?.addEventListener('click', () => {
+        if (pendingHref) window.location.href = pendingHref;
+      });
+
+      closeBtn?.addEventListener('click', () => dialog.close());
+
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+      });
+    })();
+  </script>
 
   <!-- Typeform embed script (for waitlist popup) -->
   <script src="//embed.typeform.com/next/embed.js" is:inline></script>

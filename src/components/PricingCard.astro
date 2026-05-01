@@ -11,9 +11,10 @@ interface Props {
   typeformId?: string;
   highlighted?: boolean;
   comingSoon?: boolean;
+  confirmId?: string;
 }
 
-const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, typeformId, highlighted = false, comingSoon = false } = Astro.props;
+const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, typeformId, highlighted = false, comingSoon = false, confirmId } = Astro.props;
 
 const ctaClasses = [
   "block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors cursor-pointer",
@@ -68,6 +69,7 @@ const ctaClasses = [
   ) : (
     <a
       href={ctaHref}
+      data-confirm-id={confirmId}
       class:list={ctaClasses}
     >
       {ctaText}
