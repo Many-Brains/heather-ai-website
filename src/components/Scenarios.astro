@@ -28,6 +28,14 @@ const scenarios = [
       "Text HeatherAI before you cave. <em class=\"not-italic text-white/90\">\"Wylde One Chill AF Cacao in almond milk — 30 cal, kills the chocolate urge. Brush your teeth right after. You need 48 hrs of no eating after dinner to break this — tomorrow morning we celebrate!\"</em>",
     tag: "After hours · real time",
   },
+  {
+    label: "You're on a work trip. Or vacation.",
+    onOwn:
+      "Three hotel breakfasts, two business dinners, a lunch you skipped, four \"I'm on vacation\" justifications. You come home four pounds heavier and tell yourself you'll fix it Monday.",
+    withHeather:
+      "Tell HeatherAI where you are. <em class=\"not-italic text-white/90\">\"Hotel breakfast: 2 eggs + tomato, skip the pastries. Lunch on the run is fine — Whole Foods salad bar, protein-heavy. Dinner: order first, get the steak + 2 veg, share dessert if it's worth it. We'll do a Protein Day Monday — no big deal.\"</em>",
+    tag: "Travel · 5 days, 12 meals",
+  },
 ];
 ---
 
@@ -49,7 +57,7 @@ const scenarios = [
     </p>
 
     <!-- Scenario cards — subgrid aligns tag / title / boxes horizontally across all cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:[grid-template-rows:auto_auto_1fr_1fr]">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:[grid-template-rows:auto_auto_1fr_1fr]">
       {scenarios.map((s) => (
         <article class="grid gap-3 p-6 bg-bg-surface border border-white/[0.06] rounded-2xl md:[grid-row:span_4] md:[grid-template-rows:subgrid]">
           <div class="text-[10px] text-accent uppercase tracking-[2px] font-semibold">
