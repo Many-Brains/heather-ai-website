@@ -25,9 +25,9 @@ const ctaClasses = [
 ---
 
 <div class:list={[
-  "flex flex-col p-8 rounded-2xl border",
+  "flex flex-col p-8 rounded-2xl border transition-transform",
   highlighted
-    ? "bg-accent/[0.06] border-accent/30"
+    ? "bg-accent/[0.06] border-accent/40 md:scale-105 md:shadow-2xl md:shadow-accent/10 relative md:z-10"
     : "bg-bg-surface border-white/[0.06]"
 ]}>
   <div class="flex items-center gap-3 mb-3">

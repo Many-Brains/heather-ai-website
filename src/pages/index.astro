@@ -12,11 +12,13 @@ import CtaSection from '../components/CtaSection.astro';
 
 <BaseLayout title="HeatherAI | Your AI Nutrition Coach">
   <Hero />
+  <Scenarios />
   <Stats />
   <Features />
-  <Scenarios />
-  <AlwaysOn />
   <DataStory />
+  <AlwaysOn />
   <Showcase />
-  <CtaSection />
+  <CtaSection
+    headlineHtml={'Try the coach that <em class="not-italic text-accent">meets you in the moment.</em>'}
+  />
 </BaseLayout>
