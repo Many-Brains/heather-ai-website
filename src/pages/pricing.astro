@@ -42,6 +42,8 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
         ctaText="Just track meals"
         ctaHref={ONBOARDING_TYPEFORM_URL}
         confirmId="free-confirm-dialog"
+        trackEventName="cta_click"
+        trackParams={{ cta_id: 'pricing_free', tier: 'free' }}
       />
 
       <PricingCard
@@ -62,6 +64,8 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
         ctaText="Start Coaching"
         ctaHref={STRIPE_CHECKOUT_URL}
         highlighted={true}
+        trackEventName="begin_checkout"
+        trackParams={{ tier: 'ai_coaching', value: 29, currency: 'USD', cta_location: 'pricing_card' }}
       />
 
       <PricingCard
@@ -78,6 +82,8 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
         ctaText="Join Waitlist"
         typeformId="Re9H76Ov"
         comingSoon={true}
+        trackEventName="cta_click"
+        trackParams={{ cta_id: 'pricing_human_coach', tier: 'ai_human' }}
       />
     </div>
   </section>
@@ -121,6 +127,8 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
     ctaText="Get Started"
     ctaHref={STRIPE_CHECKOUT_URL}
     showPricingLink={false}
+    trackEventName="begin_checkout"
+    trackParams={{ tier: 'ai_coaching', value: 29, currency: 'USD', cta_location: 'pricing_bottom' }}
   />
 
   <!-- Free-tier confirmation dialog -->
@@ -157,12 +165,16 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
         <button
           type="button"
           id="free-confirm-continue"
+          data-track-event="cta_click"
+          data-track-params='{"cta_id":"dialog_continue_free","tier":"free"}'
           class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-white/[0.08] hover:bg-white/[0.12] text-white cursor-pointer"
         >
           I understand — continue to Free
         </button>
         <a
           href={STRIPE_CHECKOUT_URL}
+          data-track-event="begin_checkout"
+          data-track-params='{"tier":"ai_coaching","value":29,"currency":"USD","cta_location":"dialog_upsell"}'
           class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-accent hover:bg-accent-hover text-white"
         >
           Get AI Coaching instead →
@@ -201,4 +213,11 @@ const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
 
   <!-- Typeform embed script (for waitlist popup) -->
   <script src="//embed.typeform.com/next/embed.js" is:inline></script>
+
+  <!-- view_pricing key event — fires on every /pricing load. Used by GA4 funnel reports. -->
+  <script is:inline>
+    if (window.trackEvent) {
+      window.trackEvent('view_pricing', {});
+    }
+  </script>
 </BaseLayout>

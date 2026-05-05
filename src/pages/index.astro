@@ -20,5 +20,7 @@ import CtaSection from '../components/CtaSection.astro';
   <Showcase />
   <CtaSection
     headlineHtml={'Try the coach that <em class="not-italic text-accent">meets you in the moment.</em>'}
+    trackEventName="cta_click"
+    trackParams={{ cta_id: 'home_bottom_cta', destination: '/pricing' }}
   />
 </BaseLayout>

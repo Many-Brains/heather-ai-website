@@ -36,6 +36,8 @@ const currentPath = Astro.url.pathname;
       </a>
       <a
         href="/pricing"
+        data-track-event="cta_click"
+        data-track-params='{"cta_id":"nav_cta_desktop","destination":"/pricing"}'
         class="text-[13px] font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
       >
         Get Started
@@ -61,6 +63,8 @@ const currentPath = Astro.url.pathname;
     <a href="/pricing" class="text-sm text-white/55 hover:text-white transition-colors">Pricing</a>
     <a
       href="/pricing"
+      data-track-event="cta_click"
+      data-track-params='{"cta_id":"nav_cta_mobile","destination":"/pricing"}'
       class="text-sm font-semibold px-5 py-2 bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
     >
       Get Started

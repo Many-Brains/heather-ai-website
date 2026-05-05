@@ -12,9 +12,12 @@ interface Props {
   highlighted?: boolean;
   comingSoon?: boolean;
   confirmId?: string;
+  trackEventName?: string;
+  trackParams?: Record<string, unknown>;
 }
 
-const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, typeformId, highlighted = false, comingSoon = false, confirmId } = Astro.props;
+const { tier, price, period = '/mo', priceNote, headline, features, ctaText, ctaHref, typeformId, highlighted = false, comingSoon = false, confirmId, trackEventName, trackParams } = Astro.props;
+const trackParamsJson = trackParams ? JSON.stringify(trackParams) : undefined;
 
 const ctaClasses = [
   "block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors cursor-pointer",
@@ -62,6 +65,8 @@ const ctaClasses = [
       data-tf-size="80"
       data-tf-iframe-props={`title=${tier} Waitlist`}
       data-tf-transitive-search-params
+      data-track-event={trackEventName}
+      data-track-params={trackParamsJson}
       class:list={ctaClasses}
     >
       {ctaText}
@@ -70,6 +75,8 @@ const ctaClasses = [
     <a
       href={ctaHref}
       data-confirm-id={confirmId}
+      data-track-event={trackEventName}
+      data-track-params={trackParamsJson}
       class:list={ctaClasses}
     >
       {ctaText}

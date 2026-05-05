@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Stripe Payment Link's success_url should be set to:
+//   https://getheatherai.com/welcome?stripe_session_id={CHECKOUT_SESSION_ID}
+// This page fires the GA4 `purchase` Key Event with the Stripe session_id as
+// transaction_id, then redirects the user to the onboarding Typeform with the
+// session_id passed through (so the onboarding flow can still tie back to the
+// Stripe customer).
+
+const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
+---
+
+<BaseLayout
+  title="Welcome to HeatherAI"
+  description="Setting up your HeatherAI account."
+>
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">
+    <div class="inline-block px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.08] text-[12px] text-accent tracking-[1px] uppercase mb-8">
+      You're in
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight max-w-[720px]">
+      Welcome to <em class="not-italic text-accent">HeatherAI</em>.
+    </h1>
+
+    <p class="text-lg md:text-xl text-white/55 max-w-[520px] leading-relaxed mt-6">
+      One quick onboarding form and you'll meet your coach.
+    </p>
+
+    <p class="text-sm text-white/40 mt-10" id="welcome-status">
+      Redirecting you now…
+    </p>
+
+    <noscript>
+      <p class="text-sm text-white/60 mt-6">
+        <a href={ONBOARDING_TYPEFORM_URL} class="text-accent hover:underline">
+          Continue to onboarding →
+        </a>
+      </p>
+    </noscript>
+  </section>
+
+  <script is:inline define:vars={{ ONBOARDING_TYPEFORM_URL }}>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId =
+        params.get('stripe_session_id') ||
+        params.get('session_id') ||
+        '';
+
+      // Build redirect URL — pass session_id through to the Typeform if we have it
+      var redirect = ONBOARDING_TYPEFORM_URL;
+      if (sessionId) {
+        redirect +=
+          (redirect.indexOf('?') === -1 ? '?' : '&') +
+          'stripe_session_id=' +
+          encodeURIComponent(sessionId);
+      }
+
+      var redirected = false;
+      function go() {
+        if (redirected) return;
+        redirected = true;
+        window.location.replace(redirect);
+      }
+
+      // Fire purchase event for GA4. Use event_callback so we redirect AFTER
+      // the event has been sent. Fallback timeout in case the callback doesn't
+      // fire (e.g., gtag blocked by an ad blocker) so the user isn't stranded.
+      try {
+        if (window.gtag) {
+          window.gtag('event', 'purchase', {
+            transaction_id: sessionId || undefined,
+            value: 29,
+            currency: 'USD',
+            items: [
+              {
+                item_id: 'ai_coaching_founding',
+                item_name: 'AI Coaching (Founding Member)',
+                price: 29,
+                quantity: 1,
+              },
+            ],
+            event_callback: go,
+          });
+        }
+        if (window.clarity) {
+          window.clarity('event', 'purchase');
+        }
+      } catch (e) {
+        // swallow — fall through to timeout redirect
+      }
+
+      // Hard timeout fallback (2s) — covers ad-blocked gtag, slow network,
+      // event_callback misfires, etc.
+      setTimeout(go, 2000);
+    })();
+  </script>
+</BaseLayout>
