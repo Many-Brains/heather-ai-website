@@ -1,0 +1,184 @@
+---
+# ARCHIVED — NOT ROUTED
+#
+# This file is preserved outside `src/pages/` so Astro does NOT build or serve it.
+# It captures three sections that were removed from `src/pages/intelligence.astro`
+# on 2026-05-11 because they read as "we have your data" to real clients arriving
+# from beta wave emails.
+#
+# Use later for investor pitches, press walkthroughs, or a gated investor-only
+# surface (e.g. /intelligence/data or a sidecar deck).
+#
+# To restore any section: copy its block back into `src/pages/intelligence.astro`
+# at the location noted, and (for Section 3) restore the `flywheelStages` const
+# in the frontmatter shown below.
+---
+
+{/*
+=============================================================================
+FRONTMATTER CONSTANT — required only for Section 3 (Flywheel)
+Add back to the frontmatter of src/pages/intelligence.astro:
+=============================================================================
+
+const flywheelStages = [
+  { label: 'Historical',  years: '2007–present', stat: '2007+',      desc: "Text coaching archive going back to 2007 — pre-GLP-1 era, progressively loaded into the corpus" },
+  { label: 'Current',     years: 'Active',       stat: 'Daily',      desc: "Heather's active practice — daily text coaching with clients, multi-modal intake" },
+  { label: 'Emerging',    years: 'HeatherAI',    stat: 'Continuous', desc: 'Every HeatherAI user — coaching moments compound the corpus in real time' },
+];
+
+=============================================================================
+SECTION 1 — "The dataset underneath" (big-numbers grid)
+Original location: after the "About this data" section, before "Not just text".
+=============================================================================
+*/}
+
+<!-- ============ THE DATA UNDERNEATH — big numbers ============ -->
+<section class="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-14">
+      <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Corpus</div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[800px] mx-auto leading-tight">
+        The dataset underneath.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.06] rounded-2xl overflow-hidden">
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">1M<span class="text-accent">+</span></div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Coaching Messages</div>
+      </div>
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">5,000<span class="text-accent">+</span></div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Unique Clients</div>
+      </div>
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">30k<span class="text-accent">+</span></div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Coaching Sessions</div>
+      </div>
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">Multi-<span class="text-accent">modal</span></div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Text · Images · Labels</div>
+      </div>
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">Outcome<span class="text-accent">-labeled</span></div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Patterns → results</div>
+      </div>
+      <div class="bg-bg-primary p-8 md:p-10 text-center">
+        <div class="text-4xl md:text-6xl font-bold tracking-tight">1000s</div>
+        <div class="text-[11px] text-white/40 uppercase tracking-[2px] mt-2">Proven Playbooks</div>
+      </div>
+    </div>
+
+    <p class="text-center text-[13px] text-white/35 mt-8 max-w-[640px] mx-auto leading-relaxed">
+      25 years of real practice. Real outcomes. Anonymized at every layer.
+    </p>
+  </div>
+</section>
+
+
+{/*
+=============================================================================
+SECTION 2 — "Not just text. Ground truth." (multi-modal cards)
+Original location: after "The dataset underneath", before "From moments to playbooks".
+=============================================================================
+*/}
+
+<!-- ============ MULTI-MODAL — what's in the corpus ============ -->
+<section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+  <div class="max-w-[1100px] mx-auto">
+    <div class="text-center mb-16">
+      <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">What's Inside</div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+        Not just text. <em class="not-italic text-accent">Ground truth.</em>
+      </h2>
+      <p class="text-lg text-white/50 max-w-[720px] mx-auto leading-relaxed">
+        The dataset is multi-modal and outcome-labeled. That combination is what makes it
+        different from every other health corpus on the planet.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+        <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Text</div>
+        <h3 class="text-lg font-bold mb-3">Two-way coaching dialogues</h3>
+        <p class="text-sm text-white/55 leading-relaxed">
+          The texture of how Heather coaches — how she asks questions, frames numbers, and
+          moves a client from "I screwed up" to "here's the next play." Pattern-level, not personal.
+        </p>
+      </div>
+
+      <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+        <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Images</div>
+        <h3 class="text-lg font-bold mb-3">Food photos, menus, labels</h3>
+        <p class="text-sm text-white/55 leading-relaxed">
+          Restaurant menus before business dinners. Food logs from hotel rooms. Product
+          labels from grocery aisles. Progress photos over months. Coaching happens where
+          the real decisions live.
+        </p>
+      </div>
+
+      <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+        <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Longitudinal</div>
+        <h3 class="text-lg font-bold mb-3">Multi-year weight trajectories</h3>
+        <p class="text-sm text-white/55 leading-relaxed">
+          The full shape of behavior change — not just outcomes, but how they tend to unfold.
+          Gradual losses, regain cycles, long maintenance arcs. The methodology accounts for
+          where most people actually live.
+        </p>
+      </div>
+
+      <div class="p-8 bg-bg-surface border border-white/[0.06] rounded-2xl">
+        <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">Outcome-labeled</div>
+        <h3 class="text-lg font-bold mb-3">Patterns tied to outcomes</h3>
+        <p class="text-sm text-white/55 leading-relaxed">
+          Because the methodology was refined over years, every coaching move is paired with
+          what tends to follow it — engagement, breakthrough, plateau, return. That's the
+          layer textbook training has never had.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{/*
+=============================================================================
+SECTION 3 — "The data compounds." (flywheel)
+Original location: after the Pattern Library section, before "Peer-Reviewed".
+Requires the `flywheelStages` const above to be restored.
+=============================================================================
+*/}
+
+<!-- ============ FLYWHEEL — data compounds ============ -->
+<section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
+  <div class="max-w-[1100px] mx-auto">
+    <div class="text-center mb-14">
+      <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Flywheel</div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
+        The data <em class="not-italic text-accent">compounds</em>.
+      </h2>
+    </div>
+
+    <!-- Flywheel diagram: three arcing panels with arrows between -->
+    <div class="relative">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 relative">
+        {flywheelStages.map((s, i) => (
+          <div class="relative bg-bg-surface border border-white/[0.06] rounded-2xl p-8 text-center">
+            <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-3">{s.label}</div>
+            <div class="text-4xl md:text-5xl font-bold tracking-tight mb-3">{s.stat}</div>
+            <div class="text-[11px] text-white/40 uppercase tracking-[1.5px] mb-4">{s.years}</div>
+            <p class="text-[13px] text-white/55 leading-relaxed">{s.desc}</p>
+            {i < 2 && (
+              <div class="hidden md:block absolute top-1/2 -right-6 -translate-y-1/2 text-accent/60 text-3xl">→</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="text-center text-[14px] text-white/55 leading-relaxed mt-10 max-w-[640px] mx-auto">
+      Every HeatherAI user — with consent — adds new patterns. Historical coaching data is used
+      only at the pattern level, never reproduced or attributed.
+    </p>
+  </div>
+</section>
