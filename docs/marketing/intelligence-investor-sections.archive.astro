@@ -182,3 +182,74 @@ Requires the `flywheelStages` const above to be restored.
     </p>
   </div>
 </section>
+
+
+{/*
+=============================================================================
+FRONTMATTER CONSTANT — required only for Section 4 (Archetype Segmentation)
+Add back to the frontmatter of src/pages/intelligence.astro:
+=============================================================================
+
+const archetypes = [
+  { name: 'Daily Logger',    cx: 18, cy: 28, count: 12 },
+  { name: 'Executive',       cx: 72, cy: 22, count: 10 },
+  { name: 'Returner',        cx: 34, cy: 55, count: 14 },
+  { name: 'Under Pressure',  cx: 75, cy: 58, count: 11 },
+  { name: 'Post-GLP1',       cx: 20, cy: 82, count: 9  },
+  { name: 'Maintainer',      cx: 58, cy: 85, count: 10 },
+];
+
+=============================================================================
+SECTION 4 — "Archetype Segmentation" card
+Originally lived inside the "Data Archaeology" section paired with the
+Trigger Heatmap in a 2-column grid (numbered "01 · " with the heatmap as
+"02 · "). The parent section has since been renamed to "The Rhythm / When
+coaching needs to show up" and now contains only the heatmap.
+
+To restore: drop this card back into intelligence.astro inside the heatmap
+section, wrap both cards in a `grid grid-cols-1 md:grid-cols-2 gap-6`,
+restore the section header to "Data Archaeology / What the team excavated"
+(or keep the new name — your call), and re-add the `01 · ` / `02 · `
+prefixes to the card eyebrows.
+=============================================================================
+*/}
+
+<!-- Archetype map (large) -->
+<div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
+  <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">01 · Archetype Segmentation</div>
+  <h3 class="text-xl font-bold mb-6">How the patterns surfaced.</h3>
+
+  <div class="relative bg-bg-primary rounded-xl border border-white/[0.04] h-[320px] overflow-hidden">
+    <!-- Cluster dots -->
+    {Array.from({length: 80}).map((_, i) => {
+      const cluster = i % 6;
+      const { cx, cy } = archetypes[cluster];
+      const jitterX = (Math.sin(i * 12.9898) * 43758.5) % 1;
+      const jitterY = (Math.sin(i * 78.233) * 43758.5) % 1;
+      const x = cx + (jitterX - 0.5) * 22;
+      const y = cy + (jitterY - 0.5) * 22;
+      const opacities = [0.75, 0.55, 0.65, 0.45, 0.6, 0.7];
+      return (
+        <div
+          class="absolute w-2.5 h-2.5 rounded-full bg-accent"
+          style={`left: ${x}%; top: ${y}%; opacity: ${opacities[cluster]};`}
+        />
+      );
+    })}
+
+    <!-- Cluster labels -->
+    {archetypes.map(a => (
+      <div
+        class="absolute text-[10px] text-white/70 uppercase tracking-[1.5px] font-semibold pointer-events-none"
+        style={`left: ${a.cx - 8}%; top: ${a.cy - 12}%;`}
+      >
+        {a.name}
+      </div>
+    ))}
+  </div>
+
+  <p class="text-[13px] text-white/45 leading-relaxed mt-5">
+    6 primary archetypes. Dozens more emerge at scale. The AI matches each user and
+    adjusts its coaching posture to fit.
+  </p>
+</div>

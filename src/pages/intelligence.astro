@@ -44,16 +44,6 @@ const dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 const timeLabels = ['Morning', 'Midday', 'Afternoon', 'Evening', 'Late-night'];
 const intensity = ['bg-white/[0.03]', 'bg-accent/15', 'bg-accent/40', 'bg-accent/75'];
 
-// ---- Archetype clusters (seeded) ----
-const archetypes = [
-  { name: 'Daily Logger',    cx: 18, cy: 28, count: 12 },
-  { name: 'Executive',       cx: 72, cy: 22, count: 10 },
-  { name: 'Returner',        cx: 34, cy: 55, count: 14 },
-  { name: 'Under Pressure',     cx: 75, cy: 58, count: 11 },
-  { name: 'Post-GLP1',       cx: 20, cy: 82, count: 9  },
-  { name: 'Maintainer',      cx: 58, cy: 85, count: 10 },
-];
-
 // ---- Pattern frameworks ----
 const frameworks = [
   {
@@ -177,99 +167,55 @@ const frameworks = [
   </section>
 
 
-  <!-- ============ DATA ARCHAEOLOGY — archetypes + heatmap ============ -->
+  <!-- ============ TEMPORAL TRIGGER MAP — when coaching needs to show up ============ -->
   <section class="py-28 px-6 md:px-12 border-t border-white/[0.06]">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[900px] mx-auto">
       <div class="text-center mb-14">
-        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">Data Archaeology</div>
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[900px] mx-auto leading-tight">
-          What the team <em class="not-italic text-accent">excavated</em>.
+        <div class="inline-block text-[11px] text-accent uppercase tracking-[3px] font-semibold mb-3">The Rhythm</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight max-w-[800px] mx-auto leading-tight">
+          When coaching <em class="not-italic text-accent">needs to show up</em>.
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Trigger heatmap (centered, single card) -->
+      <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
+        <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">Temporal Trigger Map</div>
+        <h3 class="text-xl font-bold mb-6">When people need coaching most.</h3>
 
-        <!-- Archetype map (large) -->
-        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
-          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">01 · Archetype Segmentation</div>
-          <h3 class="text-xl font-bold mb-6">How the patterns surfaced.</h3>
-
-          <div class="relative bg-bg-primary rounded-xl border border-white/[0.04] h-[320px] overflow-hidden">
-            <!-- Cluster dots -->
-            {Array.from({length: 80}).map((_, i) => {
-              const cluster = i % 6;
-              const { cx, cy } = archetypes[cluster];
-              const jitterX = (Math.sin(i * 12.9898) * 43758.5) % 1;
-              const jitterY = (Math.sin(i * 78.233) * 43758.5) % 1;
-              const x = cx + (jitterX - 0.5) * 22;
-              const y = cy + (jitterY - 0.5) * 22;
-              const opacities = [0.75, 0.55, 0.65, 0.45, 0.6, 0.7];
-              return (
-                <div
-                  class="absolute w-2.5 h-2.5 rounded-full bg-accent"
-                  style={`left: ${x}%; top: ${y}%; opacity: ${opacities[cluster]};`}
-                />
-              );
-            })}
-
-            <!-- Cluster labels -->
-            {archetypes.map(a => (
-              <div
-                class="absolute text-[10px] text-white/70 uppercase tracking-[1.5px] font-semibold pointer-events-none"
-                style={`left: ${a.cx - 8}%; top: ${a.cy - 12}%;`}
-              >
-                {a.name}
-              </div>
-            ))}
+        <div class="flex gap-4">
+          <div class="flex flex-col justify-between text-[10px] text-white/40 uppercase tracking-[1.5px] py-1">
+            {timeLabels.map(t => <div class="h-12 flex items-center">{t}</div>)}
           </div>
 
-          <p class="text-[13px] text-white/45 leading-relaxed mt-5">
-            6 primary archetypes. Dozens more emerge at scale. The AI matches each user and
-            adjusts its coaching posture to fit.
-          </p>
+          <div class="flex-1">
+            <div class="grid grid-cols-7 gap-1.5">
+              {triggerHeatmap.map((row) => (
+                row.map((v) => (
+                  <div class:list={["h-12 rounded-md", intensity[v]]} />
+                ))
+              ))}
+            </div>
+            <div class="grid grid-cols-7 gap-1.5 mt-2 text-[11px] text-white/40 text-center font-semibold">
+              {dayLabels.map((d) => <div>{d}</div>)}
+            </div>
+          </div>
         </div>
 
-        <!-- Trigger heatmap (large) -->
-        <div class="bg-bg-surface border border-white/[0.06] rounded-2xl p-8">
-          <div class="text-[11px] text-accent uppercase tracking-[2px] font-semibold mb-2">02 · Temporal Trigger Map</div>
-          <h3 class="text-xl font-bold mb-6">When the hard moments hit.</h3>
-
-          <div class="flex gap-4">
-            <div class="flex flex-col justify-between text-[10px] text-white/40 uppercase tracking-[1.5px] py-1">
-              {timeLabels.map(t => <div class="h-12 flex items-center">{t}</div>)}
-            </div>
-
-            <div class="flex-1">
-              <div class="grid grid-cols-7 gap-1.5">
-                {triggerHeatmap.map((row) => (
-                  row.map((v) => (
-                    <div class:list={["h-12 rounded-md", intensity[v]]} />
-                  ))
-                ))}
-              </div>
-              <div class="grid grid-cols-7 gap-1.5 mt-2 text-[11px] text-white/40 text-center font-semibold">
-                {dayLabels.map((d) => <div>{d}</div>)}
-              </div>
-            </div>
+        <div class="flex items-center gap-2 mt-6 text-[10px] text-white/35 uppercase tracking-[1.5px]">
+          <span>Low</span>
+          <div class="flex gap-1">
+            <div class="w-4 h-3 rounded-sm bg-white/[0.03]"></div>
+            <div class="w-4 h-3 rounded-sm bg-accent/15"></div>
+            <div class="w-4 h-3 rounded-sm bg-accent/40"></div>
+            <div class="w-4 h-3 rounded-sm bg-accent/75"></div>
           </div>
-
-          <div class="flex items-center gap-2 mt-6 text-[10px] text-white/35 uppercase tracking-[1.5px]">
-            <span>Low</span>
-            <div class="flex gap-1">
-              <div class="w-4 h-3 rounded-sm bg-white/[0.03]"></div>
-              <div class="w-4 h-3 rounded-sm bg-accent/15"></div>
-              <div class="w-4 h-3 rounded-sm bg-accent/40"></div>
-              <div class="w-4 h-3 rounded-sm bg-accent/75"></div>
-            </div>
-            <span>High</span>
-          </div>
-
-          <p class="text-[13px] text-white/45 leading-relaxed mt-5">
-            Friday evening. Saturday afternoon. Late Sunday. The patterns reveal when most people
-            need coaching — so HeatherAI meets you there.
-          </p>
+          <span>High</span>
         </div>
 
+        <p class="text-[13px] text-white/45 leading-relaxed mt-5">
+          Friday evening. Saturday afternoon. Late Sunday. The patterns reveal when most people
+          need coaching — so HeatherAI meets you there.
+        </p>
       </div>
     </div>
   </section>
