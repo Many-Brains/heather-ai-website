@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/ops",
+      "has": [{ "type": "host", "value": "ops.getheatherai.com" }]
+    }
+  ]
+}

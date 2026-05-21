@@ -1,0 +1,62 @@
+{
+  "last_updated": "2026-05-21",
+  "reports": [
+    {
+      "id": "2026-05-20-daily",
+      "type": "daily",
+      "date": "Wednesday, May 20, 2026",
+      "date_iso": "2026-05-20",
+      "stats": {
+        "active_users": 10,
+        "total_paid_users": 24,
+        "total_messages": 56,
+        "avg_messages_per_user": 5.6
+      },
+      "engagement_quality": "high",
+      "engagement_summary": "Users were actively logging meals, asking for concrete meal plans, and using HeatherAI for both tactical (what to eat) and behavioral (emotional eating, travel rules) support. Multiple members completed full-day logs and received specific macros/hydration guidance; several conversations focused on one-off events (tooth extraction, travel, celebration meals).",
+      "usage_themes": [
+        { "theme": "Meal Logging", "description": "Users repeatedly logged full days (breakfast/lunch/snacks/dinner) and asked HeatherAI to record meals; HeatherAI confirmed logs and gave next-step plans and macro estimates.", "message_count": 34, "example_quote": "I had for lunch 2 drumsticks no skin with salad" },
+        { "theme": "Protein / Macro Questions", "description": "Multiple users asked for protein targets, protein counts for meals, and macro/carb breakdowns; HeatherAI provided gram estimates and daily protein targets.", "message_count": 12, "example_quote": "How much protein do I need to eat a day? I'm 126 lbs" },
+        { "theme": "Hydration & Liter by Lunch", "description": "Many users were given and reported the 'Liter by Lunch' water goal; HeatherAI repeatedly used water as a simple behavioral KPI and checked users' progress.", "message_count": 10, "example_quote": "I've drank my 1.5L today" },
+        { "theme": "Emotional Eating & Behavior Change", "description": "Users sought help for mindless/emotional eating, clean-plate/no-waste issues, and trip-related binge concerns; HeatherAI supplied scripts, rules, and cognitive reframing.", "message_count": 9, "example_quote": "Why do I treat my mouth like a trash can for indulgent foods?" },
+        { "theme": "Travel / Celebration Planning", "description": "Users planning trips or reporting celebration days asked for rules to avoid overindulging; HeatherAI gave explicit daily rules (one fun item/day) and meal structure for trips.", "message_count": 8, "example_quote": "We're going to Charlottesville to visit my in-laws" },
+        { "theme": "Post-Procedure Nutrition", "description": "A user with a same-day tooth extraction asked for pre/post procedure meal plans and soft-food options; HeatherAI provided concrete soft-protein options and safety advice.", "message_count": 9, "example_quote": "I'm getting a tooth removed today" },
+        { "theme": "App / UX Friction", "description": "Users asked whether there is a standalone app and reported difficulties logging small items; HeatherAI explained chat-based access but no product workaround was available.", "message_count": 3, "example_quote": "is there a heather AI app? or do I do it all on a desktop" }
+      ],
+      "quality_assessments": [
+        { "exchange_summary": "User worried that a 150g weight change after eating was meaningful; HeatherAI replied '150g is NOTHING — literally a good bathroom trip'", "grade": "Needs Work", "reason": "Physiologically accurate but blunt — could read as dismissive of user's concern.", "improvement": "Open with empathy first ('I hear you — that shift can feel upsetting'), then explain normal weight variability." },
+        { "exchange_summary": "New user asked about goals and HeatherAI began listing coaching points but one reply is truncated mid-sentence ('and tell you what')", "grade": "Needs Work", "reason": "Incomplete response during onboarding (day 0) reduces trust at the most critical moment.", "improvement": "Ensure onboarding messages finish fully and provide a clear next-step checklist." },
+        { "exchange_summary": "User said they 'can't figure out how to log' chocolates; HeatherAI advised best-guess logging but didn't reduce friction", "grade": "Needs Work", "reason": "Tells the user to estimate but misses the chance to offer a quick-log workaround or template.", "improvement": "Offer canned quick-log examples users can copy and flag as a product request for a snack shortcut." },
+        { "exchange_summary": "User asked if HeatherAI would give daily calorie/protein totals nightly; HeatherAI set clear expectations and described pattern coaching instead", "grade": "Good", "reason": "Clear, honest expectation-setting while describing a superior behavioral approach.", "improvement": null }
+      ],
+      "human_intervention_requests": [
+        { "user": "Kadoche.K", "request": "Same-day tooth extraction — implicit need for follow-up check-in after procedure.", "urgency": "high", "suggested_action": "Send a brief empathetic check-in after the 1pm extraction to confirm recovery and clarify dairy guidance post-procedure." },
+        { "user": "Heatherelizabeth06", "request": "Deep emotional eating pattern work — repeated 'clean plate' behavior causing distress.", "urgency": "medium", "suggested_action": "Offer a scheduled counseling-style session with a human RD to work through triggers; provide therapy referral option." },
+        { "user": "Lisakovalovich", "request": "Onboarding and goal setup (day 0 member) — needs help setting expectations and accountability.", "urgency": "medium", "suggested_action": "Send a personalized welcome message and offer a 10-15 min onboarding call to set up daily goals and explain how to use HeatherAI." }
+      ],
+      "frustration_signals": [
+        { "user": "Heatherelizabeth06", "signal": "Why do I treat my mouth like a trash can for indulgent foods?", "severity": "high", "context": "Self-directed shame and recurring emotional eating pattern — could reduce long-term adherence if unaddressed." },
+        { "user": "Goosymoose", "signal": "Had some unreal chocolates after dinner can't figure out how to log them", "severity": "medium", "context": "Logging friction erodes the 'if you bite it, write it' habit." },
+        { "user": "Lisakovalovich", "signal": "is there a heather AI app? or do I do it all on a desktop", "severity": "low", "context": "New user expectation mismatch — implies preference for a native mobile experience." }
+      ],
+      "churn_risks": [
+        { "user": "Lisakovalovich", "indicators": ["Asked if there is a HeatherAI app (implies preference for native app)", "Day 0 of membership — first impressions matter"], "risk_level": "medium", "recommended_action": "Prioritize onboarding touchpoint; emphasize immediate value (daily plan + how to log) to lock in habit in the first week." },
+        { "user": "Heatherelizabeth06", "indicators": ["High emotional distress around eating, admission of repeated self-sabotage on trips", "Expressed resignation ('feeling like crap doesn't stop them')"], "risk_level": "medium", "recommended_action": "Offer proactive scheduling for human coaching and check-ins around upcoming travel." },
+        { "user": "Goosymoose", "indicators": ["Struggled to log chocolates — logging friction", "Expressed improvement yesterday but noted friction points today"], "risk_level": "low", "recommended_action": "Send in-chat micro-tutorial on quick logging and encourage estimated logging to reduce friction." }
+      ],
+      "missing_features": [
+        { "feature": "Native mobile app", "user_quote": "is there a heather AI app? or do I do it all on a desktop", "demand_count": 1, "priority": "high", "stickiness_impact": "Push notifications and easier quick-logging would increase daily engagement and reduce reliance on browser." },
+        { "feature": "End-of-day calorie + protein summary", "user_quote": "will you give me calorie and protein feedback at the end of each day?", "demand_count": 1, "priority": "high", "stickiness_impact": "Automated daily macro summaries would increase perceived value and habit formation." },
+        { "feature": "Quick snack logging (estimate mode)", "user_quote": "Had some unreal chocolates after dinner can't figure out how to log them", "demand_count": 1, "priority": "medium", "stickiness_impact": "Frictionless estimate mode keeps users logging even when they deviate from plan." }
+      ],
+      "action_items": [
+        { "id": "2026-05-20-1", "type": "heather-checkin", "description": "Follow up with Kadoche.K within 24 hours — confirm antibiotic name, clarify dairy guidance post-extraction, and check healing/pain.", "user": "Kadoche.K", "urgency": "today" },
+        { "id": "2026-05-20-2", "type": "product-fix", "description": "Add in-chat micro-tutorial triggered on 'how do I log' and a one-tap quick snack estimate option to reduce logging friction.", "user": null, "urgency": "today" },
+        { "id": "2026-05-20-3", "type": "urgent-outreach", "description": "Offer Heatherelizabeth06 a scheduled human coaching session on emotional eating and a pre-trip plan for Charlottesville.", "user": "Heatherelizabeth06", "urgency": "this-week" },
+        { "id": "2026-05-20-4", "type": "product-fix", "description": "Create an onboarding card explaining the chat-as-app workflow for new users (especially mobile) in their first session.", "user": null, "urgency": "this-week" },
+        { "id": "2026-05-20-5", "type": "product-fix", "description": "Evaluate building an automated end-of-day calorie/protein summary as an optional opt-in for users who request numeric feedback.", "user": null, "urgency": "this-week" },
+        { "id": "2026-05-20-6", "type": "content-gap", "description": "Draft guidance piece: 'Eating around dental procedures + antibiotics' — soft-food alternatives (dairy and non-dairy), hydration tips, when to seek medical advice.", "user": null, "urgency": "this-week" }
+      ]
+    }
+  ]
+}
