@@ -1,0 +1,21 @@
+# HeatherAI
+
+> AI-powered personal nutrition coaching built on 25 years of methodology from Heather Bauer, RD. Real-time coaching for restaurant orders, GLP-1 nutrition support, meal planning, and behavior change for people who already know what to eat but struggle to stick to a plan.
+
+HeatherAI is operated by Many Brains, Inc. (Westport, CT). The coaching methodology is the work of Heather Bauer, RD, a registered dietitian with a 25-year practice serving 5,000+ clients, bestselling author of "The Wall Street Diet" (2008) and "Bread Is the Devil" (2012), and a national television regular (GMA, Today, CNN, The View, Ellen, New York Times, Wall Street Journal, People).
+
+## Core pages
+- [Homepage](https://getheatherai.com/): What HeatherAI does, who it's for, and current beta results.
+- [About Heather Bauer](https://getheatherai.com/about): Founder profile, credentials, and the story behind the methodology.
+- [Scenarios](https://getheatherai.com/scenarios): Concrete in-the-moment coaching examples — restaurants, late-night cravings, travel, GLP-1 users.
+- [Intelligence](https://getheatherai.com/intelligence): How HeatherAI was built — coaching methodology and pattern library.
+- [Pricing](https://getheatherai.com/pricing): Free meal logging, $29/month AI Coaching, $299/month AI + Human Coach (waitlist).
+
+## Trust, safety, and policy
+- [Responsible AI](https://getheatherai.com/responsible-ai): Domain-scoped AI, medical safety boundaries, expert-in-the-loop, de-identification of historical coaching material.
+- [Privacy Policy](https://getheatherai.com/privacy): Data handling, third-party services, health information, historical coaching material.
+- [Terms of Service](https://getheatherai.com/terms): Legal terms and medical disclaimers.
+
+## Contact
+- [Contact](https://getheatherai.com/contact): General inquiries, press, partnerships, support.
+- Email: support@heatherbauer.com

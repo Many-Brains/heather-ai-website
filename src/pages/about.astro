@@ -1,9 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaSection from '../components/CtaSection.astro';
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Heather Bauer',
+  honorificSuffix: 'RD',
+  jobTitle: 'Registered Dietitian',
+  description:
+    'Registered Dietitian, bestselling author, and founder of HeatherAI. Built a 25-year nutrition coaching practice on Park Avenue serving over 5,000 clients across 30,000+ appointments. National television regular and Huffington Post columnist.',
+  url: 'https://getheatherai.com/about',
+  image: 'https://getheatherai.com/images/heather-bauer.webp',
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'University of Wisconsin',
+  },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Registered Dietitian',
+    occupationalCategory: 'Healthcare practitioner',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: 'HeatherAI',
+    url: 'https://getheatherai.com',
+  },
+  knowsAbout: [
+    'Nutrition coaching',
+    'Weight loss',
+    'Behavior change',
+    'GLP-1 nutrition support',
+    'Eating psychology',
+    'Behavioral nutrition',
+    'Meal planning',
+    'Pre- and post-natal nutrition',
+  ],
+  memberOf: [
+    {
+      '@type': 'Organization',
+      name: 'Cooking Light Nutrition Advisory Board',
+    },
+  ],
+  author: [
+    {
+      '@type': 'Book',
+      name: 'The Wall Street Diet',
+      datePublished: '2008',
+      author: {
+        '@type': 'Person',
+        name: 'Heather Bauer',
+      },
+    },
+    {
+      '@type': 'Book',
+      name: 'Bread Is the Devil',
+      datePublished: '2012',
+      author: {
+        '@type': 'Person',
+        name: 'Heather Bauer',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout title="About | HeatherAI" description="Meet Heather Bauer, RD — the bestselling author and registered dietitian whose 25-year coaching practice powers HeatherAI.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(personLd)}></script>
 
   <!-- ============ HERO ============ -->
   <section class="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">

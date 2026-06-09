@@ -10,9 +10,67 @@ import Showcase from '../components/Showcase.astro';
 import CtaSection from '../components/CtaSection.astro';
 import BetaResults from '../components/BetaResults.astro';
 import NeutralityCallout from '../components/NeutralityCallout.astro';
+
+const softwareApplicationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'HeatherAI',
+  applicationCategory: 'HealthApplication',
+  applicationSubCategory: 'Nutrition coaching',
+  operatingSystem: 'Web',
+  description:
+    'AI-powered personal nutrition coach built on 25 years of methodology from Heather Bauer, RD. Real-time coaching for restaurant orders, GLP-1 nutrition, meal planning, and weight loss.',
+  url: 'https://getheatherai.com',
+  image: 'https://getheatherai.com/images/heather-bauer.webp',
+  provider: {
+    '@type': 'Organization',
+    name: 'Many Brains, Inc.',
+    url: 'https://getheatherai.com',
+  },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Meal Logging',
+      price: '0',
+      priceCurrency: 'USD',
+      description:
+        'Free meal logging, macro estimates, weight and water tracking, full meal history.',
+    },
+    {
+      '@type': 'Offer',
+      name: 'AI Coaching',
+      price: '29',
+      priceCurrency: 'USD',
+      description:
+        'Full AI nutrition coaching, personalized meal plans, restaurant guidance, health trends, proactive check-ins, weekly video coaching.',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '29',
+        priceCurrency: 'USD',
+        billingDuration: 'P1M',
+      },
+    },
+    {
+      '@type': 'Offer',
+      name: 'AI + Human Coach',
+      price: '299',
+      priceCurrency: 'USD',
+      description:
+        'Everything in AI Coaching plus 2 monthly Zoom sessions with a registered dietitian. Currently waitlist-only.',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '299',
+        priceCurrency: 'USD',
+        billingDuration: 'P1M',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout title="HeatherAI | Your AI Nutrition Coach">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(softwareApplicationLd)}></script>
+
   <Hero />
   <Scenarios />
   <Stats />

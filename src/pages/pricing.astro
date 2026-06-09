@@ -8,9 +8,65 @@ import CtaSection from '../components/CtaSection.astro';
 // redirect to ONBOARDING_TYPEFORM_URL with ?stripe_session_id={CHECKOUT_SESSION_ID} appended.
 const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/28E28qbpa3nQ4hRcQR7N600';
 const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What makes HeatherAI different from ChatGPT?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I cancel anytime?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. No contracts, no commitments. You can upgrade, downgrade, or cancel your plan at any time.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Will the price go up after beta?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes — public pricing will be higher. Founding members keep their $29 founding rate. No contract — cancel anytime.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is HeatherAI a replacement for a dietitian?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. For the full experience, the AI + Human Coach plan includes sessions with a registered dietitian.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does meal logging work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Take a photo of your meal or describe it in text. HeatherAI estimates macros and provides feedback based on your personal nutrition plan. Free plan users get unlimited text logging and 5 photo logs per day; paid plans get unlimited photos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What if I'm on a GLP-1 medication?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout title="Pricing | HeatherAI" description="Simple pricing for AI nutrition coaching. Start free with meal logging.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>
 
   <!-- Header -->
   <section class="pt-32 pb-16 px-6 text-center">
