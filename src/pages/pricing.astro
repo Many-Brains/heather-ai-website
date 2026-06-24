@@ -6,7 +6,7 @@ import CtaSection from '../components/CtaSection.astro';
 
 // Stripe Payment Link (prod). Its success_url in Stripe is configured to
 // redirect to ONBOARDING_TYPEFORM_URL with ?stripe_session_id={CHECKOUT_SESSION_ID} appended.
-const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/28E28qbpa3nQ4hRcQR7N600';
+const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/6oUcN4ctef6ybKj5op7N601';
 const ONBOARDING_TYPEFORM_URL = 'https://form.typeform.com/to/M8pOWVcQ';
 
 const faqLd = {
@@ -34,7 +34,7 @@ const faqLd = {
       name: 'How does the 7-day free trial work?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You get 7 days of full AI Coaching for free. We collect your card up front so coaching starts immediately. On day 8, your card is charged $29/month and continues monthly. Cancel any time during the trial and you will not be charged.',
+        text: 'You get 7 days of full AI Coaching for free. We collect your card up front so coaching starts immediately. On day 8, your card is charged $39/month and continues monthly. Cancel any time during the trial and you will not be charged.',
       },
     },
     {
@@ -42,7 +42,7 @@ const faqLd = {
       name: 'Will the price change later?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'AI Coaching is $29/month after your 7-day free trial. No contracts, no commitments. Cancel any time.',
+        text: 'AI Coaching is $39/month after your 7-day free trial. No contracts, no commitments. Cancel any time.',
       },
     },
     {
@@ -112,8 +112,8 @@ const faqLd = {
 
       <PricingCard
         tier="AI Coaching"
-        price="$29"
-        priceNote="7 days free, then $29/mo. Cancel anytime."
+        price="$39"
+        priceNote="7 days free, then $39/mo. Cancel anytime."
         headline="Your personal nutrition coach."
         features={[
           'Everything in Free, plus unlimited photo logging',
@@ -129,7 +129,7 @@ const faqLd = {
         ctaHref={STRIPE_CHECKOUT_URL}
         highlighted={true}
         trackEventName="begin_checkout"
-        trackParams={{ tier: 'ai_coaching', value: 29, currency: 'USD', cta_location: 'pricing_card' }}
+        trackParams={{ tier: 'ai_coaching', value: 39, currency: 'USD', cta_location: 'pricing_card' }}
       />
 
       <PricingCard
@@ -167,11 +167,11 @@ const faqLd = {
       />
       <FaqItem
         question="How does the 7-day free trial work?"
-        answer="You get 7 days of full AI Coaching for free. We collect your card up front so coaching starts immediately. On day 8, your card is charged $29/month and continues monthly. Cancel any time during the trial and you will not be charged."
+        answer="You get 7 days of full AI Coaching for free. We collect your card up front so coaching starts immediately. On day 8, your card is charged $39/month and continues monthly. Cancel any time during the trial and you will not be charged."
       />
       <FaqItem
         question="Will the price change later?"
-        answer="AI Coaching is $29/month after your 7-day free trial. No contracts, no commitments. Cancel any time."
+        answer="AI Coaching is $39/month after your 7-day free trial. No contracts, no commitments. Cancel any time."
       />
       <FaqItem
         question="Is HeatherAI a replacement for a dietitian?"
@@ -196,7 +196,7 @@ const faqLd = {
     ctaHref={STRIPE_CHECKOUT_URL}
     showPricingLink={false}
     trackEventName="begin_checkout"
-    trackParams={{ tier: 'ai_coaching', value: 29, currency: 'USD', cta_location: 'pricing_bottom' }}
+    trackParams={{ tier: 'ai_coaching', value: 39, currency: 'USD', cta_location: 'pricing_bottom' }}
   />
 
   <!-- Free-tier confirmation dialog -->
@@ -226,7 +226,7 @@ const faqLd = {
       </p>
 
       <p class="text-sm text-white/70 leading-relaxed mb-6">
-        If you're looking for a coach, you'll want <strong class="text-white/90">AI Coaching</strong>. Try it free for 7 days, then $29/mo.
+        If you're looking for a coach, you'll want <strong class="text-white/90">AI Coaching</strong>. Try it free for 7 days, then $39/mo.
       </p>
 
       <div class="flex flex-col gap-3">
@@ -242,7 +242,7 @@ const faqLd = {
         <a
           href={STRIPE_CHECKOUT_URL}
           data-track-event="begin_checkout"
-          data-track-params='{"tier":"ai_coaching","value":29,"currency":"USD","cta_location":"dialog_upsell"}'
+          data-track-params='{"tier":"ai_coaching","value":39,"currency":"USD","cta_location":"dialog_upsell"}'
           class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-accent hover:bg-accent-hover text-white"
         >
           Try AI Coaching free for 7 days →
