@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="max-w-[720px] mx-auto">
 
       <h1 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-4 text-center">Privacy Policy</h1>
-      <p class="text-sm text-white/40 text-center mb-16">Last updated: April 12, 2026</p>
+      <p class="text-sm text-white/40 text-center mb-16">Last updated: June 30, 2026</p>
 
       <div class="space-y-10 text-sm text-white/55 leading-relaxed [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mb-4 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-white/80 [&_h3]:mb-3 [&_strong]:text-white/75 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2">
 
@@ -96,7 +96,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Third-Party Services -->
         <div>
           <h2>Third-Party Services</h2>
-          <p>We use the following third-party services to operate HeatherAI:</p>
+          <p>
+            We use the following third-party services to operate HeatherAI. We require every
+            third-party provider with whom we share user data to protect that data to the same
+            or a higher standard than described in this policy, and to use it only to provide
+            services to us:
+          </p>
 
           <h3>AI Processing</h3>
           <p>
@@ -124,18 +129,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <a href="https://tools.google.com/dlpage/gaoptout" class="text-accent hover:underline" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.
           </p>
 
-          <h3 class="mt-6">Error Monitoring</h3>
+          <h3 class="mt-6">Error Monitoring &amp; Product Analytics</h3>
           <p>
-            We use Sentry for error tracking to identify and fix technical issues. Error reports
-            may include anonymized technical context but do not contain your personal health data
-            or conversation content.
+            We use Sentry to detect and diagnose technical errors. Error reports may include
+            account identifiers (such as your user ID and email) and limited technical context,
+            and Sentry may record anonymized session replays in which text is masked and media is
+            blocked. We configure these tools to avoid capturing your health data, and we do not
+            use them for advertising or marketing.
+          </p>
+          <p class="mt-4">
+            The HeatherAI app also sends basic product-usage events (such as sign-in, session
+            start, and feature usage) to our own servers to help us understand how the Service is
+            used and improve it. This first-party usage data is not shared with third-party
+            advertising or analytics networks.
           </p>
         </div>
 
         <!-- Data Sharing -->
         <div>
           <h2>Data Sharing</h2>
-          <p>We do not sell your personal information. We share your data only in these circumstances:</p>
+          <p>
+            We do not sell your personal information, and we never use or disclose your health,
+            nutrition, or coaching data for advertising, marketing, or use-based data mining,
+            whether by us or by any third party. We share your data only in these circumstances:
+          </p>
           <ul>
             <li><strong>Third-party service providers:</strong> As described above, to operate the Service</li>
             <li><strong>AI + Human Coach sessions:</strong> If you subscribe to the AI + Human Coach plan, your coaching profile and relevant health information will be shared with the registered dietitian assigned to your sessions</li>
@@ -155,7 +172,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             longitudinal coaching.
           </p>
           <p class="mt-4">
-            If you delete your account, we will delete your personal data within 30 days, except
+            You can delete your account at any time by emailing us at
+            <a href="mailto:support@heatherbauer.com" class="text-accent hover:underline">support@heatherbauer.com</a>.
+            When you delete your account, we will delete your personal data within 30 days, except
             where we are required to retain it for legal or compliance purposes. Anonymized,
             aggregated data that cannot be linked back to you may be retained indefinitely to
             improve the Service.
