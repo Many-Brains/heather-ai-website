@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CtaSection from '../components/CtaSection.astro';
+import CtaBlock from '../components/CtaBlock.astro';
 
 const personLd = {
   '@context': 'https://schema.org',
@@ -62,6 +62,20 @@ const personLd = {
       },
     },
   ],
+  subjectOf: [
+    {
+      '@type': 'Book',
+      name: 'The Wall Street Diet',
+      author: { '@type': 'Person', name: 'Heather Bauer' },
+      datePublished: '2008',
+    },
+    {
+      '@type': 'Book',
+      name: 'Bread Is the Devil',
+      author: { '@type': 'Person', name: 'Heather Bauer' },
+      datePublished: '2012',
+    },
+  ],
 };
 ---
 
@@ -91,6 +105,11 @@ const personLd = {
         Heather Bauer, RD &middot; Registered Dietitian &middot; Bestselling Author
       </p>
     </div>
+
+    <!-- Press mentions -->
+    <div class="mt-10 flex justify-center flex-wrap gap-x-6 gap-y-2 text-[12px] font-bold tracking-[0.08em] text-white/25 uppercase">
+      <span>GMA</span><span>Today</span><span>CNN</span><span>The View</span><span>Ellen</span><span>The New York Times</span><span>WSJ</span><span>People</span>
+    </div>
   </section>
 
 
@@ -101,60 +120,50 @@ const personLd = {
 
       <div class="space-y-10 text-white/55 text-base leading-relaxed">
         <p>
-          <strong class="text-white block mb-1">It started on the field.</strong>
-          Heather Bauer was a high school athlete who discovered that what she ate
-          directly changed how she performed. That connection — between food and function,
-          between what you put in and what you get out — became the foundation of her career.
-          She studied dietetics at the University of Wisconsin and never looked back.
+          For 25 years, Heather Bauer ran one of New York's most sought-after private nutrition
+          practices: around 5,000 clients, roughly 30,000 appointments, and by her own count
+          about a million text messages. Her method never lived in the appointment. It lived in
+          the moments between: the client in front of a menu, the 3pm vending machine pull, the
+          morning the scale jumped and panic set in. She answered those texts. That is why her
+          clients succeeded.
         </p>
 
         <p>
-          <strong class="text-white block mb-1">She trained in hospitals. Then she went where the clients were.</strong>
-          She ran the pre- and post-natal nutrition program at Maimonides Medical Center,
-          then became Nutrition Program Director at Equinox Fitness Clubs — where she saw
-          that even the most motivated people struggled not for lack of information, but
-          because life kept getting in the way.
+          It is also why her practice could never grow. Her product was her attention, and there
+          is only so much of it. Her concierge 1:1 practice runs $1,500+ per month, which puts
+          her out of reach of almost everyone who needs her.
         </p>
 
         <p>
-          <strong class="text-white block mb-1">So she built her own practice.</strong>
-          Heather founded Heather Bauer Nutrition, a nutrition counseling center on Park Avenue, where she
-          worked with NYC's top bankers, lawyers, doctors, mothers, athletes, and celebrities.
-          Her approach was different: she didn't hand people a meal plan and send them home.
-          She coached them through the real moments — the business dinner, the airport,
-          the 10pm kitchen raid — one text at a time, every day.
+          HeatherAI exists to break that constraint. Not by replacing Heather Bauer, but by
+          packaging what she knows, how she coaches, and when she pushes versus when she
+          comforts, and making it available to everyone, instantly, at a price regular people
+          can afford.
         </p>
+      </div>
+    </div>
+  </section>
 
-        <p>
-          <strong class="text-white block mb-1">She wrote the book. Literally, two of them.</strong>
-          <em class="not-italic text-white/75">The Wall Street Diet</em> (2008) and
-          <em class="not-italic text-white/75">Bread Is the Devil</em> (2012) — both
-          bestsellers. The second introduced her "Diet Devils" framework: the specific
-          patterns that sabotage people's goals, and the counter-strategies she'd developed
-          through thousands of client interactions.
-        </p>
 
-        <p>
-          <strong class="text-white block mb-1">The media came calling.</strong>
-          GMA, Today, CNN, The View, Ellen, the New York Times, the Wall Street Journal, People.
-          A national television regular and Huffington Post columnist. Speaking engagements at
-          Goldman Sachs and the 92nd Street Y. A seat on the Cooking Light Nutrition Advisory Board.
-        </p>
-
-        <p>
-          <strong class="text-white block mb-1">She's always been an entrepreneur.</strong>
-          In 2012, she founded Bestowed — a curated healthy food subscription box — and sold it
-          to UrthBox in 2018. She's never been content to just practice. She's always been
-          looking for ways to scale what she knows.
-        </p>
-
-        <p>
-          <strong class="text-white block mb-1">5,000 clients later, the question became obvious.</strong>
-          Over 30,000 appointments. A million coaching moments. Heather had built something
-          rare: a methodology refined across thousands of real situations — the patterns of what
-          derails people, and the responses that actually work. The question was no longer whether
-          her approach worked. It was whether it could reach more than a handful of people at a time.
-        </p>
+  <!-- ============ THE BOOKS ============ -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-8">The books</div>
+      <div class="grid sm:grid-cols-2 gap-10">
+        <a href="https://www.amazon.com/Wall-Street-Diet-Surprisingly-Effortless/dp/1401309194" target="_blank" rel="noopener" class="flex gap-6 items-start group">
+          <img src="/images/books/wall-street-diet.webp" alt="The Wall Street Diet book cover" width="120" loading="lazy" class="rounded-lg shadow-xl shrink-0 group-hover:-translate-y-1 transition-transform" />
+          <div>
+            <h3 class="font-bold group-hover:text-accent transition-colors">The Wall Street Diet</h3>
+            <p class="text-sm text-white/50 mt-2 leading-relaxed">The method for busy professionals: lose the weight and keep up with a life that never slows down.</p>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/Bread-Devil-Weight-Loss-Sabotage/dp/1250004195" target="_blank" rel="noopener" class="flex gap-6 items-start group">
+          <img src="/images/books/bread-is-the-devil.webp" alt="Bread Is the Devil book cover" width="120" loading="lazy" class="rounded-lg shadow-xl shrink-0 group-hover:-translate-y-1 transition-transform" />
+          <div>
+            <h3 class="font-bold group-hover:text-accent transition-colors">Bread Is the Devil</h3>
+            <p class="text-sm text-white/50 mt-2 leading-relaxed">The diet-saboteur habits book: why we know what to eat and do the opposite, and how to stop.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -209,18 +218,14 @@ const personLd = {
 
       <div class="space-y-6 text-lg text-white/55 leading-relaxed">
         <p>
-          Great coaching never scaled. Heather could only work with so many people, and her
-          programs ($950–$3,750) put her out of reach for most. HeatherAI takes everything
-          she's learned across thousands of clients — the same methodology, the same
-          frameworks, the same voice — and makes it
+          Great coaching never scaled. Heather Bauer could only work with so many people.
+          HeatherAI takes everything she's learned across thousands of clients: the same
+          methodology, the same frameworks, the same voice, and makes it
           <strong class="text-white/90">available whenever you need it</strong>.
         </p>
 
-        <p>
-          For those who want the real thing — a private Zoom with a registered dietitian,
-          a plan review, clinical judgment when it matters — the
-          <a href="/pricing" class="text-accent hover:underline font-semibold">AI + Human Coach</a>
-          plan gives you that too.
+        <p class="text-base text-white/45">
+          A dedicated human-coach tier is waitlist-only.
         </p>
 
         <p class="text-base text-white/40">
@@ -233,12 +238,6 @@ const personLd = {
 
 
   <!-- ============ CTA ============ -->
-  <CtaSection
-    headline={"Experience the coaching Heather built."}
-    subline="7-day free trial. Cancel anytime."
-    ctaText="Try HeatherAI"
-    trackEventName="cta_click"
-    trackParams={{ cta_id: 'about_bottom_cta', destination: '/pricing' }}
-  />
+  <CtaBlock ctaId="about_bottom_cta" />
 
 </BaseLayout>
