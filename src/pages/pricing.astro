@@ -18,7 +18,7 @@ const faqLd = {
       name: 'What makes HeatherAI different from ChatGPT?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge.",
+        text: "ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at /method.",
       },
     },
     {
@@ -66,7 +66,7 @@ const faqLd = {
       name: "What if I'm on a GLP-1 medication?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals.',
+        text: 'HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals. More at GLP-1 coaching: /glp-1.',
       },
     },
   ],
@@ -159,7 +159,7 @@ const faqLd = {
 
       <FaqItem
         question="What makes HeatherAI different from ChatGPT?"
-        answer="ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge."
+        answerHtml="ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at <a href='/method' class='text-accent hover:underline'>/method</a>."
       />
       <FaqItem
         question="Can I cancel anytime?"
@@ -183,7 +183,7 @@ const faqLd = {
       />
       <FaqItem
         question="What if I'm on a GLP-1 medication?"
-        answer="HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals."
+        answerHtml="HeatherAI is designed to support anyone on their nutrition journey, including those on GLP-1 medications like Ozempic or Wegovy. The coaching adapts to your specific situation and goals. More at <a href='/glp-1' class='text-accent hover:underline'>GLP-1 coaching</a>."
       />
     </div>
   </section>

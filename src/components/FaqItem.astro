@@ -1,10 +1,11 @@
 ---
 interface Props {
   question: string;
-  answer: string;
+  answer?: string;
+  answerHtml?: string;
 }
 
-const { question, answer } = Astro.props;
+const { question, answer, answerHtml } = Astro.props;
 ---
 
 <details class="group border-b border-white/[0.06]">
@@ -12,7 +13,11 @@ const { question, answer } = Astro.props;
     {question}
     <span class="text-white/30 group-open:rotate-45 transition-transform text-xl leading-none">+</span>
   </summary>
-  <div class="pb-5 text-sm text-white/45 leading-relaxed">
-    {answer}
-  </div>
+  {answerHtml ? (
+    <div class="pb-5 text-sm text-white/45 leading-relaxed" set:html={answerHtml}></div>
+  ) : (
+    <div class="pb-5 text-sm text-white/45 leading-relaxed">
+      {answer}
+    </div>
+  )}
 </details>
