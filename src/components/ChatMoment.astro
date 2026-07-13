@@ -1,0 +1,84 @@
+---
+interface Message {
+  role: 'user' | 'ai';
+  text: string;
+}
+interface Props {
+  messages: Message[];
+  animate?: boolean;
+  label?: string;
+}
+const { messages, animate = false, label = 'Example HeatherAI coaching conversation' } = Astro.props;
+---
+
+<div
+  class:list={['chat-moment bg-bg-surface border border-white/[0.08] rounded-2xl p-4 md:p-5', animate && 'chat-animate']}
+  role="log"
+  aria-label={label}
+>
+  {messages.map((m) => (
+    <>
+      {m.role === 'ai' && (
+        <div class="chat-typing mr-auto bg-bg-raised text-white/50 rounded-xl px-4 py-2.5 my-2 text-[13px] hidden" aria-hidden="true">
+          HeatherAI is typing<span class="animate-pulse">&hellip;</span>
+        </div>
+      )}
+      <div
+        class:list={[
+          'chat-bubble max-w-[85%] rounded-xl px-4 py-2.5 my-2 text-[14px] leading-relaxed',
+          m.role === 'user' ? 'ml-auto bg-accent text-white' : 'mr-auto bg-bg-raised text-white/90',
+        ]}
+      >
+        {m.text}
+      </div>
+    </>
+  ))}
+</div>
+
+<style>
+  /* Animation is opt-in and motion-safe. Bubbles are always present in the DOM;
+     the reveal only toggles opacity/transform, so crawlers and no-JS render everything. */
+  @media (prefers-reduced-motion: no-preference) {
+    .chat-animate.js-armed .chat-bubble {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .chat-animate.js-armed .chat-bubble.shown {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) {
+    document.querySelectorAll<HTMLElement>('.chat-animate').forEach((panel) => {
+      panel.classList.add('js-armed');
+      const items = Array.from(panel.children) as HTMLElement[];
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return;
+          io.disconnect();
+          let t = 500;
+          items.forEach((el) => {
+            if (el.classList.contains('chat-typing')) {
+              const show = t;
+              const hide = t + 700;
+              setTimeout(() => el.classList.remove('hidden'), show);
+              setTimeout(() => el.classList.add('hidden'), hide);
+              t = hide;
+            } else if (el.classList.contains('chat-bubble')) {
+              const at = t;
+              setTimeout(() => el.classList.add('shown'), at);
+              t = at + 900;
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      io.observe(panel);
+    });
+  }
+</script>
