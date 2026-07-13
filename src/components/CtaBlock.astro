@@ -1,0 +1,33 @@
+---
+interface Props {
+  headlineHtml?: string;
+  ctaId: string;
+}
+const {
+  headlineHtml = 'Meet the coach that <em class="not-italic text-accent">meets you in the moment.</em>',
+  ctaId,
+} = Astro.props;
+---
+
+<section class="py-28 px-6 md:px-12 border-t border-white/[0.06] text-center">
+  <h2 class="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-8" set:html={headlineHtml}></h2>
+  <div class="flex items-center justify-center gap-6 flex-wrap">
+    <a
+      href="/pricing"
+      data-track-event="cta_click"
+      data-track-params={JSON.stringify({ cta_id: ctaId, destination: '/pricing' })}
+      class="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl text-base transition-all hover:-translate-y-0.5"
+    >
+      Try free for 7 days
+    </a>
+    <a
+      href="/pricing"
+      data-track-event="cta_click"
+      data-track-params={JSON.stringify({ cta_id: `${ctaId}_pricing_link`, destination: '/pricing' })}
+      class="text-sm text-accent hover:underline"
+    >See pricing &rarr;</a>
+  </div>
+  <p class="text-[13px] text-white/30 mt-6">7 days free, then $39/mo. Cancel anytime. Or start free with meal logging.</p>
+  <!-- Reserved: App Store badge slot. Un-hide at iOS launch. -->
+  <div class="hidden mt-6" data-appstore-slot></div>
+</section>

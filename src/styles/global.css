@@ -3,8 +3,11 @@
 @theme {
   --color-bg-primary: #0a0a0a;
   --color-bg-surface: #111111;
+  --color-bg-raised: #1a1a1a;
+  --color-line: #262628;
   --color-accent: #E8734A;
   --color-accent-hover: #D4623C;
+  --color-accent-glow: #FF8E5A;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
