@@ -1,0 +1,18 @@
+---
+import ChatMoment from './ChatMoment.astro';
+interface Message { role: 'user' | 'ai'; text: string }
+interface Props {
+  line: string;
+  accent: string;
+  messages: Message[];
+}
+const { line, accent, messages } = Astro.props;
+const [before, after] = line.split(accent);
+---
+
+<div class="grid md:grid-cols-2 gap-8 md:gap-14 items-center py-12">
+  <p class="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+    {before}<em class="not-italic text-accent">{accent}</em>{after}
+  </p>
+  <ChatMoment messages={messages} animate={true} />
+</div>
