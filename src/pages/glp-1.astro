@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChatMoment from '../components/ChatMoment.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Will HeatherAI tell me to stop my GLP-1 medication?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Never. HeatherAI coaches through the medication and never gives medical advice about it. Medication decisions stay between you and your prescriber.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does HeatherAI prescribe or recommend GLP-1s?',
+      acceptedAnswer: { '@type': 'Answer', text: 'No. HeatherAI never sells, prescribes, or recommends GLP-1 medications. It provides nutrition coaching for people who are on them, and the same method works without them.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens when I stop the medication?',
+      acceptedAnswer: { '@type': 'Answer', text: "That is exactly what the coaching prepares you for. The method worked for 25 years before GLP-1s existed: structure, protein anchors, planning, and logging habits that outlast the prescription." },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="GLP-1 Nutrition Coaching | HeatherAI"
+  description="Nutrition coaching built for GLP-1 medications: protein-first meals, muscle protection, side-effect-aware hydration, and habits that outlast the prescription, from a real dietitian's 25-year method. We never sell or recommend GLP-1s."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>
+
+  <!-- Hero -->
+  <section class="pt-40 pb-16 px-6 md:px-12 text-center">
+    <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-4">On a GLP-1?</div>
+    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl mx-auto">
+      The medication quiets appetite. <em class="not-italic text-accent">It doesn't teach you how to eat.</em>
+    </h1>
+    <p class="text-lg text-white/50 max-w-2xl mx-auto mb-8">
+      Coaching built for the medication, from a dietitian who coaches through it every day. We never sell or recommend GLP-1s. We make them work better.
+    </p>
+    <a
+      href="/pricing"
+      data-track-event="cta_click"
+      data-track-params='{"cta_id":"glp1_hero_cta","destination":"/pricing"}'
+      class="inline-block px-8 py-4 bg-accent hover:bg-accent-hover text-white font-semibold rounded-xl transition-all hover:-translate-y-0.5"
+    >
+      Try free for 7 days
+    </a>
+  </section>
+
+  <!-- What changes -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-8">What changes on the medication</div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">Protein first</h3>
+          <p class="text-sm text-white/50 leading-relaxed">A smaller appetite means every bite counts for more. Meals get smaller and protein-forward, and muscle is protected on purpose.</p>
+        </div>
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">Side effects, handled</h3>
+          <p class="text-sm text-white/50 leading-relaxed">Liter by Lunch, aimed straight at the hard parts: nausea, constipation, and fatigue respond to front-loaded hydration.</p>
+        </div>
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">The off-ramp</h3>
+          <p class="text-sm text-white/50 leading-relaxed">The method worked for 25 years before GLP-1s existed. The habits you build now are the reason the loss survives the prescription.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What coaching looks like -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">What coaching looks like</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">
+        In its lane, <em class="not-italic text-accent">on purpose.</em>
+      </h2>
+      <ChatMoment
+        animate={true}
+        label="HeatherAI coaching a member through a GLP-1 dose change"
+        messages={[
+          { role: 'user', text: 'Moved up to 5mg yesterday. Barely hungry and kind of queasy.' },
+          { role: 'ai', text: "I can't give medical advice, but nutrition-wise we'll keep it simple and gentle. Small, protein-first meals today. And get your water in early: Liter by Lunch helps with exactly this." },
+        ]}
+      />
+      <p class="text-[12px] text-white/30 mt-4">Language from a real coaching exchange. If a member reports concerning symptoms, the case is flagged for Heather Bauer's clinical review immediately.</p>
+    </div>
+  </section>
+
+  <!-- Proof (generic quote until GLP-1-specific consent lands; see design doc) -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06] text-center">
+    <blockquote class="max-w-2xl mx-auto text-xl md:text-2xl text-white/85 italic leading-relaxed">
+      "This is really working for me having instant feedback. And knowing I can plan for treats."
+    </blockquote>
+    <p class="text-[12px] text-white/35 mt-5">
+      Founding member &middot; Individual results vary. HeatherAI is nutrition coaching, not medical advice or treatment.
+    </p>
+  </section>
+
+  <!-- Straight answers -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold tracking-tight mb-8">Straight answers</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold mb-1">Will you tell me to stop my medication?</h3>
+          <p class="text-sm text-white/50">Never. Medication decisions stay between you and your prescriber.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Do you prescribe or recommend GLP-1s?</h3>
+          <p class="text-sm text-white/50">No. We coach through them. The same method works without them.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">What happens when I stop?</h3>
+          <p class="text-sm text-white/50">That's exactly what we prepare you for. The habits are the point; the prescription is temporary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBlock ctaId="glp1_bottom_cta" />
+</BaseLayout>
