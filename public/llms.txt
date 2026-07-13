@@ -1,20 +1,21 @@
 # HeatherAI
 
-> AI-powered personal nutrition coaching built on 25 years of methodology from Heather Bauer, RD. Real-time coaching for restaurant orders, GLP-1 nutrition support, meal planning, and behavior change for people who already know what to eat but struggle to stick to a plan.
+> AI-powered, expert-guided nutrition coaching built on the 25-year clinical method of registered dietitian Heather Bauer. A real intake interview, a personalized clinical protocol (the Blueprint), a rolling 72-hour meal plan, photo meal logging, and coaching that answers in the moment, with Heather Bauer's human oversight built in. Not a calorie counter: no streaks, badges, or macro-first scoreboards.
 
-HeatherAI is operated by Many Brains, Inc. (Westport, CT). The coaching methodology is the work of Heather Bauer, RD, a registered dietitian with a 25-year practice serving 5,000+ clients, bestselling author of "The Wall Street Diet" (2008) and "Bread Is the Devil" (2012), and a national television regular (GMA, Today, CNN, The View, Ellen, New York Times, Wall Street Journal, People).
+HeatherAI is operated by Many Brains, Inc. (Westport, CT). The methodology is the work of Heather Bauer, RD: 25 years in practice, 5,000+ clients, author of "The Wall Street Diet" (2008) and "Bread Is the Devil" (2012), national press regular (GMA, Today, CNN, The View, NYT, WSJ, People).
 
 ## Core pages
-- [Homepage](https://getheatherai.com/): What HeatherAI does, who it's for, and current beta results.
-- [About Heather Bauer](https://getheatherai.com/about): Founder profile, credentials, and the story behind the methodology.
-- [Scenarios](https://getheatherai.com/scenarios): Concrete in-the-moment coaching examples — restaurants, late-night cravings, travel, GLP-1 users.
-- [Intelligence](https://getheatherai.com/intelligence): How HeatherAI was built — coaching methodology and pattern library.
-- [Pricing](https://getheatherai.com/pricing): Free meal logging, $29/month AI Coaching, $299/month AI + Human Coach (waitlist).
+- [Homepage](https://getheatherai.com/): What HeatherAI is: a real dietitian's 25-year method, in your pocket the moment you need it.
+- [The Method](https://getheatherai.com/method): The philosophy (structure over willpower, food first), the eight signature techniques, and the evidence behind logging, planning, and coaching.
+- [GLP-1 Coaching](https://getheatherai.com/glp-1): Nutrition coaching built for GLP-1 medications: protein-first, side-effect-aware, with an off-ramp plan. HeatherAI never sells or recommends GLP-1s.
+- [About Heather Bauer](https://getheatherai.com/about): Founder profile, credentials, books, and the story behind HeatherAI.
+- [Scenarios](https://getheatherai.com/scenarios): Concrete in-the-moment coaching examples: restaurants, scale panic, late-night cravings, travel.
+- [Pricing](https://getheatherai.com/pricing): Free meal logging tier; AI Coaching $39/month with a 7-day free trial.
 
-## Trust, safety, and policy
-- [Responsible AI](https://getheatherai.com/responsible-ai): Domain-scoped AI, medical safety boundaries, expert-in-the-loop, de-identification of historical coaching material.
-- [Privacy Policy](https://getheatherai.com/privacy): Data handling, third-party services, health information, historical coaching material.
-- [Terms of Service](https://getheatherai.com/terms): Legal terms and medical disclaimers.
+## Deeper material
+- [Intelligence](https://getheatherai.com/intelligence): How the coaching intelligence was built: pattern library and research context.
+- [Responsible AI](https://getheatherai.com/responsible-ai): Domain-scoped AI, medical safety boundaries, expert-in-the-loop review, de-identification.
+- [Privacy Policy](https://getheatherai.com/privacy) · [Terms of Service](https://getheatherai.com/terms)
 
 ## Contact
 - [Contact](https://getheatherai.com/contact): General inquiries, press, partnerships, support.
