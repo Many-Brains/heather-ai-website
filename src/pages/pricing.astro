@@ -18,7 +18,7 @@ const faqLd = {
       name: 'What makes HeatherAI different from ChatGPT?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at /method.",
+        text: "ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology: her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at /method.",
       },
     },
     {
@@ -50,7 +50,7 @@ const faqLd = {
       name: 'Is HeatherAI a replacement for a dietitian?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. For the full experience, the AI + Human Coach plan includes sessions with a registered dietitian.",
+        text: "HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. A dedicated human-coach tier with monthly RD sessions is waitlist-only.",
       },
     },
     {
@@ -85,7 +85,7 @@ const faqLd = {
   <!-- Beta context -->
   <section class="px-6 pb-16 text-center">
     <p class="text-sm text-white/50 max-w-[560px] mx-auto leading-relaxed">
-      HeatherAI is in active beta — your feedback directly shapes what we build next.
+      HeatherAI is new and improving fast: member feedback directly shapes what we build next.
     </p>
   </section>
 
@@ -159,7 +159,7 @@ const faqLd = {
 
       <FaqItem
         question="What makes HeatherAI different from ChatGPT?"
-        answerHtml="ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology — her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at <a href='/method' class='text-accent hover:underline'>/method</a>."
+        answerHtml="ChatGPT gives accurate nutrition info from textbooks. HeatherAI is built on Heather Bauer's 25-year coaching methodology: her frameworks, her playbooks, her voice. Ask ChatGPT what to eat at a steakhouse, you get a list. Ask HeatherAI, you get the move calibrated to your goals, your patterns, and what you logged at lunch. Methodology, not just knowledge. Read about the method behind the coaching at <a href='/method' class='text-accent hover:underline'>/method</a>."
       />
       <FaqItem
         question="Can I cancel anytime?"
@@ -175,7 +175,7 @@ const faqLd = {
       />
       <FaqItem
         question="Is HeatherAI a replacement for a dietitian?"
-        answer="HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. For the full experience, the AI + Human Coach plan includes sessions with a registered dietitian."
+        answer="HeatherAI is a coaching tool, not medical advice. It's designed to support your nutrition journey between appointments. A dedicated human-coach tier with monthly RD sessions is waitlist-only."
       />
       <FaqItem
         question="How does meal logging work?"
@@ -217,7 +217,7 @@ const faqLd = {
       </button>
 
       <h3 class="text-xl font-bold tracking-tight mb-4 pr-8">
-        Just so we're clear — Free is meal logging only.
+        Just so we're clear: Free is meal logging only.
       </h3>
 
       <p class="text-sm text-white/70 leading-relaxed mb-3">
@@ -237,7 +237,7 @@ const faqLd = {
           data-track-params='{"cta_id":"dialog_continue_free","tier":"free"}'
           class="block w-full text-center py-3 px-6 rounded-lg font-semibold text-sm transition-colors bg-white/[0.08] hover:bg-white/[0.12] text-white cursor-pointer"
         >
-          I understand — continue to Free
+          I understand, continue to Free
         </button>
         <a
           href={STRIPE_CHECKOUT_URL}
@@ -282,7 +282,7 @@ const faqLd = {
   <!-- Typeform embed script (for waitlist popup) -->
   <script src="//embed.typeform.com/next/embed.js" is:inline></script>
 
-  <!-- view_pricing key event — fires on every /pricing load. Used by GA4 funnel reports. -->
+  <!-- view_pricing key event: fires on every /pricing load. Used by GA4 funnel reports. -->
   <script is:inline>
     if (window.trackEvent) {
       window.trackEvent('view_pricing', {});

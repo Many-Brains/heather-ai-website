@@ -7,7 +7,7 @@ HeatherAI is operated by Many Brains, Inc. (Westport, CT). The methodology is th
 ## Core pages
 - [Homepage](https://getheatherai.com/): What HeatherAI is: a real dietitian's 25-year method, in your pocket the moment you need it.
 - [The Method](https://getheatherai.com/method): The philosophy (structure over willpower, food first), the eight signature techniques, and the evidence behind logging, planning, and coaching.
-- [GLP-1 Coaching](https://getheatherai.com/glp-1): Nutrition coaching built for GLP-1 medications: protein-first, side-effect-aware, with an off-ramp plan. HeatherAI never sells or recommends GLP-1s.
+- [GLP-1 Coaching](https://getheatherai.com/glp-1): Nutrition coaching built for GLP-1 medications: protein-first, side-effect-aware, and habits that outlast the prescription. HeatherAI never sells or recommends GLP-1s.
 - [About Heather Bauer](https://getheatherai.com/about): Founder profile, credentials, books, and the story behind HeatherAI.
 - [Scenarios](https://getheatherai.com/scenarios): Concrete in-the-moment coaching examples: restaurants, scale panic, late-night cravings, travel.
 - [Pricing](https://getheatherai.com/pricing): Free meal logging tier; AI Coaching $39/month with a 7-day free trial.
