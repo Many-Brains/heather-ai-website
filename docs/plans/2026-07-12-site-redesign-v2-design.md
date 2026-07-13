@@ -140,6 +140,16 @@ Tiers, Stripe links, Typeforms, GA4 events unchanged. FAQ answers link into /met
 - **Motion budget:** typing loop in hero + fade/slide on moments beats. Nothing else animates.
 - **Images:** existing app screenshots and Heather photo reused; no new photography required this iteration.
 
+## iOS screenshot integration
+
+Real iOS app screenshots replace web-app screenshots as the product imagery, sourced from fresh captures (no suitable set exists on disk as of 2026-07-12).
+
+- **Needed captures (4):** a coaching conversation, photo meal logging, the Blueprint, the 72-hour meal plan. Raw PNGs from a physical iPhone or simulator; drop in `heather-ai/docs/screenshots/inbox/` or the website repo.
+- **Treatment:** screenshots are framed in a CSS/SVG iPhone bezel at render time (no baked-in frames), cropped/cleaned (status-bar hygiene), exported as optimized WebP with `srcset`.
+- **Placement:** /method "How you get it" step visuals (primary); optionally one framed shot on the homepage moments/method-teaser sections if it earns its place; hero remains the chat demo.
+- **Reuse:** same assets accompany the App Store badge at iOS launch (the reserved CTA slot).
+- **Guardrail:** until the app is live, screenshots are product shots only; no "App Store" / "download" / "install" language (master doc claims register: no PWA/install phrasing for web).
+
 ## Guardrails checklist (applies to every page)
 
 - No em dashes anywhere in published copy.
