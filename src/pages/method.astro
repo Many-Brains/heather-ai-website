@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+
+const techniques = [
+  ['Protein at every meal', 'The single most protective lever. A real breakfast and a real lunch prevent the 9pm unraveling.'],
+  ['Finite foods', 'Choose foods with a natural stopping point. One portioned yogurt, never the open bag.'],
+  ['Kitchen closed', 'A defined end to the eating day. After dinner, the kitchen is done.'],
+  ['The turkey test', "Late-night craving check: if plain turkey slices don't sound good, it's habit, not hunger."],
+  ['Liter by Lunch', 'A liter of water before lunch, every day.'],
+  ['Goal ranges', 'A target range instead of one number, because bodies fluctuate and single numbers manufacture failure.'],
+  ['One-day resets', 'On-demand recovery days: ask for a Protein Day and get one instantly. A reset, never a punishment.'],
+  ['Kitchen vs. quality control', 'Food moves the scale. Exercise protects the muscle so the weight you lose is the right weight.'],
+];
+
+const steps = [
+  ['A real intake interview', 'It starts like a first appointment, not an app install. One question at a time: what brings you here, when is eating hardest, which foods can you not live without. Nothing is prescribed until the interview is done.', null],
+  ['Your Blueprint', 'A personal clinical protocol, not a settings page. Layered by goal, GLP-1 status, life stage, and medical conditions, and reconciled into one coherent plan. Not three toggles: one stacked protocol.', '/images/app/ios/daily-plan.webp'],
+  ['The 72-Hour Reality Plan', 'A rolling three-day meal plan built around your actual life, because real life changes faster than meal plan PDFs. Swap a dinner, plan around a restaurant, rebuild after travel.', '/images/app/ios/today.webp'],
+  ['Logging without the misery', "Snap the plate and it's logged. No search, no fields, no barcode. Or just say what you ate, even days later.", null],
+  ['Coaching that remembers you', 'Your patterns, your travel week, what you said three weeks ago. It never re-asks, never resets, and connects today to your history.', '/images/app/ios/chat-plan.webp'],
+  ['Progress against a range', 'Weight, water, and movement log in seconds and flow into the coaching, plotted against your goal range, never a single make-or-break number.', '/images/app/ios/weight-chart.webp'],
+];
+---
+
+<BaseLayout
+  title="The Method | HeatherAI"
+  description="The 25-year clinical method behind HeatherAI: structure over willpower, protein anchors, finite foods, one-day resets, and the three behaviors research links to lasting weight loss."
+>
+  <!-- Hero -->
+  <section class="pt-40 pb-16 px-6 md:px-12 text-center">
+    <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-4">The Method</div>
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-5">
+      A method, <em class="not-italic text-accent">not an app.</em>
+    </h1>
+    <p class="text-lg text-white/50 max-w-xl mx-auto">
+      Built in 25 years of practice. Proven one client at a time, about 5,000 times.
+    </p>
+  </section>
+
+  <!-- Evidence -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">Why it works</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-10">
+        Three behaviors. <em class="not-italic text-accent">Decades of evidence.</em>
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">Log it</h3>
+          <p class="text-sm text-white/50 leading-relaxed">In a landmark 1,700-person study, people who kept daily food logs lost twice as much weight as those who kept none.<sup>1</sup></p>
+        </div>
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">Plan it</h3>
+          <p class="text-sm text-white/50 leading-relaxed">Planning ahead beats deciding hungry. Heather Bauer's reverse journal applied this decades before the apps did.</p>
+        </div>
+        <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-7">
+          <h3 class="font-bold mb-2">Keep a coach</h3>
+          <p class="text-sm text-white/50 leading-relaxed">Ongoing coaching contact is one of the best-documented predictors of keeping weight off. Regain starts when the coaching stops.<sup>2</sup> This coach never does.</p>
+        </div>
+      </div>
+      <p class="text-[11px] text-white/25 mt-6">
+        1. Kaiser Permanente study, American Journal of Preventive Medicine, 2008. 2. Meta-analysis of 11 randomized trials, Obesity Reviews, 2012. Individual results vary. HeatherAI is nutrition coaching, not medical advice or treatment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">The philosophy</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">
+        Structure does the work, <em class="not-italic text-accent">not willpower.</em>
+      </h2>
+      <details class="group border-b border-white/[0.08] py-4">
+        <summary class="cursor-pointer font-semibold list-none flex justify-between items-center">Food first, numbers second <span class="text-accent group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="text-sm text-white/50 pt-3 leading-relaxed">This is not a macro-tracking program. The numbers exist for anyone who wants them, but they never lead. When the structure of the day is right, the willpower question mostly disappears.</p>
+      </details>
+      <details class="group border-b border-white/[0.08] py-4">
+        <summary class="cursor-pointer font-semibold list-none flex justify-between items-center">Goal ranges, not a magic number <span class="text-accent group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="text-sm text-white/50 pt-3 leading-relaxed">Members work toward ranges, because bodies fluctuate and single numbers manufacture failure. You hit a first goal range and build from there.</p>
+      </details>
+      <details class="group border-b border-white/[0.08] py-4">
+        <summary class="cursor-pointer font-semibold list-none flex justify-between items-center">Recovery is the skill <span class="text-accent group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="text-sm text-white/50 pt-3 leading-relaxed">Everyone slips. A blown day is a data point, not a verdict, and the answer is always a next action: reset starts with your next meal, not next week.</p>
+      </details>
+      <details class="group border-b border-white/[0.08] py-4">
+        <summary class="cursor-pointer font-semibold list-none flex justify-between items-center">If you bite it, write it <span class="text-accent group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="text-sm text-white/50 pt-3 leading-relaxed">Logging is the habit everything else hangs on, so it has to be effortless. Snap a photo, or just say what you ate.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Techniques -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">Signature techniques</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-10">
+        Named. Learnable. <em class="not-italic text-accent">Yours in week one.</em>
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {techniques.map(([name, desc]) => (
+          <div class="bg-bg-surface border border-white/[0.08] rounded-2xl p-6">
+            <h3 class="font-bold text-[15px] mb-2">{name}</h3>
+            <p class="text-[13px] text-white/50 leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How you get it -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">How you get it</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
+        From first interview <em class="not-italic text-accent">to every meal.</em>
+      </h2>
+      <div class="space-y-16">
+        {steps.map(([title, desc, img], i) => (
+          <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div class:list={[i % 2 === 1 && img ? 'md:order-2' : '']}>
+              <h3 class="text-xl font-bold mb-3">{title}</h3>
+              <p class="text-white/50 leading-relaxed">{desc}</p>
+            </div>
+            {img && (
+              <div class:list={['flex justify-center', i % 2 === 1 ? 'md:order-1' : '']}>
+                <img
+                  src={img}
+                  alt={`HeatherAI app: ${title}`}
+                  width="280"
+                  loading="lazy"
+                  class="rounded-[2rem] border-4 border-white/[0.08] shadow-2xl shadow-accent/10 max-w-[280px] w-full"
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Oversight -->
+  <section class="py-20 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">Behind it all</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-5">
+        Expert oversight <em class="not-italic text-accent">built in, not bolted on.</em>
+      </h2>
+      <p class="text-white/50 leading-relaxed max-w-2xl mx-auto">
+        Heather Bauer, RD reviews real coaching sessions and tunes how HeatherAI coaches. If a member reports concerning symptoms, the case is flagged for her clinical review immediately. The coaching stays in its lane: nutrition, never medical advice.
+      </p>
+    </div>
+  </section>
+
+  <CtaBlock ctaId="method_bottom_cta" />
+</BaseLayout>
