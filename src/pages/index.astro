@@ -8,7 +8,8 @@ import CtaBlock from '../components/CtaBlock.astro';
 const softwareApplicationLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'HeatherAI',
+  name: 'Range',
+  alternateName: 'HeatherAI',
   applicationCategory: 'HealthApplication',
   applicationSubCategory: 'Nutrition coaching',
   operatingSystem: 'Web',
@@ -27,7 +28,7 @@ const softwareApplicationLd = {
 };
 ---
 
-<BaseLayout title="HeatherAI | AI-Powered, Expert-Guided Nutrition Coaching">
+<BaseLayout title="Range by Heather Bauer, RD | AI Nutrition Coaching">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(softwareApplicationLd)}></script>
 
   <Hero />
@@ -77,8 +78,11 @@ const softwareApplicationLd = {
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
         Structure does the work, <em class="not-italic text-accent">not willpower.</em>
       </h2>
-      <p class="text-white/50 mb-8">
+      <p class="text-white/50 mb-2">
         No streaks. No badges. No macro math. A day with a shape, built by a dietitian who proved it for 25 years.
+      </p>
+      <p class="text-white/70 font-medium mb-8">
+        Your streak isn't the product. Your Tuesday after a bad Monday is.
       </p>
       <div class="flex flex-wrap justify-center gap-3 mb-8">
         {['Protein at every meal', 'Finite foods', 'Kitchen closed', 'One-day resets', 'Goal ranges'].map((t) => (
@@ -95,7 +99,7 @@ const softwareApplicationLd = {
       "This is why this app is so fantastic. I'm asking in real time where I might have before just eaten it and said screw it."
     </blockquote>
     <p class="text-[12px] text-white/35 mt-5">
-      Founding member &middot; Individual results vary. HeatherAI is nutrition coaching, not medical advice or treatment.
+      Founding member &middot; Individual results vary. Range is nutrition coaching, not medical advice or treatment.
     </p>
   </section>
 

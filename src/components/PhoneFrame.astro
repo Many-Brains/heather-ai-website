@@ -1,0 +1,21 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  class?: string;
+}
+const { src, alt, width = 280, class: className = '' } = Astro.props;
+const height = Math.round(width * (1680 / 828));
+---
+
+<div class:list={['phone-frame inline-block rounded-[2.2rem] bg-bg-raised border border-white/[0.12] p-2.5 shadow-2xl shadow-accent/15', className]}>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading="lazy"
+    class="block rounded-[1.7rem] w-full h-auto"
+  />
+</div>

@@ -1,24 +1,25 @@
 ---
-import ChatMoment from './ChatMoment.astro';
+import PhoneFrame from './PhoneFrame.astro';
 
-const heroChat = [
-  { role: 'user' as const, text: 'Just sat down at a steakhouse. Client dinner. Help.' },
-  { role: 'ai' as const, text: "You've got this. Shrimp cocktail to start, then the filet with broccolini instead of the potato. Order first so the table follows you." },
-  { role: 'user' as const, text: "You're a genius. Done and done." },
+// Mobile cycle order + captions (desktop fan shows all three at once).
+const screens = [
+  { src: '/images/app/ios/chat-plan.webp', alt: 'Coaching conversation building a meal plan in the app', caption: 'A coach that answers in the moment' },
+  { src: '/images/app/ios/today.webp', alt: 'Today view with meals planned and logged', caption: 'Logged in seconds. And it actually goes somewhere.' },
+  { src: '/images/app/ios/weight-chart.webp', alt: 'Weight progress chart with a goal range band', caption: 'Progress against a range, never one number' },
 ];
 ---
 
-<section class="min-h-screen flex items-center pt-24 pb-16 px-6 md:px-12">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-    <div>
+<section class="min-h-screen flex items-center pt-28 pb-16 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto w-full">
+    <div class="text-center">
       <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-5">
         AI-powered, expert-guided nutrition coaching
       </div>
-      <h1 class="text-[44px] md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-8">
+      <h1 class="text-[40px] md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-8 max-w-4xl mx-auto">
         A real dietitian's 25-year method,
         <em class="not-italic text-accent">in your pocket the moment you need it.</em>
       </h1>
-      <div class="flex items-center gap-6 flex-wrap">
+      <div class="flex items-center justify-center gap-6 flex-wrap">
         <a
           href="/pricing"
           data-track-event="cta_click"
@@ -33,6 +34,63 @@ const heroChat = [
         7 days free, then $39/mo. Cancel anytime. Or start free with meal logging.
       </p>
     </div>
-    <ChatMoment messages={heroChat} animate={true} label="HeatherAI answering a live restaurant question" />
+
+    <!-- Desktop: trio fan -->
+    <div class="hidden md:flex justify-center items-start gap-6 mt-14">
+      <div class="w-[220px] -rotate-6 translate-y-6">
+        <PhoneFrame src={screens[2].src} alt={screens[2].alt} width={220} />
+      </div>
+      <div class="w-[260px] z-10">
+        <PhoneFrame src={screens[0].src} alt={screens[0].alt} width={260} />
+      </div>
+      <div class="w-[220px] rotate-6 translate-y-6">
+        <PhoneFrame src={screens[1].src} alt={screens[1].alt} width={220} />
+      </div>
+    </div>
+
+    <!-- Mobile: single cycling phone -->
+    <div class="md:hidden mt-12 mx-auto max-w-[240px] text-center" data-hero-cycle>
+      {screens.map((s, i) => (
+        <div class:list={['hero-slide', i > 0 && 'hidden']} data-slide={i}>
+          <PhoneFrame src={s.src} alt={s.alt} width={240} />
+          <p class="text-[13px] text-white/45 mt-4">{s.caption}</p>
+        </div>
+      ))}
+      <div class="flex justify-center gap-1.5 mt-3" aria-hidden="true">
+        {screens.map((_, i) => (
+          <span class:list={['hero-dot w-1.5 h-1.5 rounded-full', i === 0 ? 'bg-accent' : 'bg-white/20']} data-dot={i}></span>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  // Mobile hero cycle: advances every 4s once visible; static first slide for
+  // reduced-motion or no-JS. Tap the phone to pause/resume.
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.querySelector<HTMLElement>('[data-hero-cycle]');
+  if (root && !reduced) {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.hero-slide'));
+    const dots = Array.from(root.querySelectorAll<HTMLElement>('.hero-dot'));
+    let current = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    const show = (n: number) => {
+      slides[current].classList.add('hidden');
+      dots[current].classList.replace('bg-accent', 'bg-white/20');
+      current = n % slides.length;
+      slides[current].classList.remove('hidden');
+      dots[current].classList.replace('bg-white/20', 'bg-accent');
+    };
+    const start = () => { if (!timer) timer = setInterval(() => show(current + 1), 4000); };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+
+    root.addEventListener('click', () => (timer ? stop() : start()));
+    const io = new IntersectionObserver(
+      (entries) => entries.some((e) => e.isIntersecting) ? start() : stop(),
+      { threshold: 0.3 }
+    );
+    io.observe(root);
+  }
+</script>
