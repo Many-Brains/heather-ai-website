@@ -118,7 +118,9 @@ Do NOT market the GLP-1 Companion (roadmap). Page describes today's coaching onl
 
 ## /about rework
 
-Trim ~950 → ~500 words. Keep: Heather photo, story arc (practice → why HeatherAI), books, press list, existing named 1:1-practice testimonials. Absorb the AlwaysOn "couldn't scale, now it can" narrative. Settle on ONE legacy-price framing: "$1,500+/month" (drop the "$950–$3,750" range). Keep Person JSON-LD.
+Trim ~950 → ~500 words. Keep: Heather photo, story arc (practice → why HeatherAI), press list, existing named 1:1-practice testimonials. Absorb the AlwaysOn "couldn't scale, now it can" narrative. Settle on ONE legacy-price framing: "$1,500+/month" (drop the "$950–$3,750" range). Keep Person JSON-LD.
+
+**Books block (upgraded):** show both book jackets as images, not just text mentions. Source jackets from heatherbauer.com/books (The Wall Street Diet: `images.squarespace-cdn.com/.../wsd.jpeg`; Bread Is the Devil: `.../bread+is+the+devil.jpeg`), downloaded and self-hosted as optimized WebP in `public/images/books/`. Each jacket links to its Amazon page (outbound, `rel="noopener"`). One-line description per book drawn from master-doc-consistent framing (Wall Street Diet = the method for busy professionals; Bread Is the Devil = the diet-saboteur habits book). Add `Book` JSON-LD entries under Heather's Person schema.
 
 ## /pricing light touch
 
@@ -169,7 +171,17 @@ Real iOS app screenshots replace web-app screenshots as the product imagery, sou
 - **Retired from homepage** (files can remain for reuse): `PhoneCarousel`, `Scenarios` (page keeps its own), `Stats`, `Features`, `DataStory`, `AlwaysOn`, `Showcase`, `NeutralityCallout`.
 - **Redirects:** none needed (no URLs removed).
 - **Analytics:** preserve GA4 events (`cta_click`, `view_pricing`, `purchase`) and add `cta_id`s for new CTAs; keep Clarity.
-- **SEO:** /glp-1 and /method get full meta/OG treatment; /glp-1 targets GLP-1-nutrition-coaching intent.
+
+## SEO and AI discoverability (maintain or improve, never regress)
+
+The site already has deliberate AI/search infrastructure; the redesign must carry all of it forward and extend it to the new pages:
+
+- **Keep as-is:** `robots.txt` with explicit AI-crawler allows (GPTBot, ClaudeBot, PerplexityBot, et al.); `@astrojs/sitemap` integration + sitemap reference in robots.txt; OG/Twitter/canonical/description tags in `BaseLayout`.
+- **Update:** `public/llms.txt` rewritten for the new IA (page list, one-line purpose each, pull positioning language from the master doc's Section 1).
+- **Extend to new pages:** /method and /glp-1 get unique titles, meta descriptions, OG images, and canonical URLs; /glp-1 title/description target "GLP-1 nutrition coaching" search intent; /method targets method/dietitian intent.
+- **Structured data:** homepage SoftwareApplication (updated), pricing FAQPage (kept), about Person + new Book entries, /glp-1 gets its own FAQPage schema from the mini-FAQ.
+- **Content integrity for crawlers:** hero chat demo and moments beats render full text without JS (animation is progressive enhancement), so the page's story is fully visible to crawlers and LLMs. Heading hierarchy stays semantic (one h1/page, h2 sections).
+- **Acceptance:** post-build check that sitemap includes new pages, no page lost its meta description, and JSON-LD validates (Rich Results test or schema linting).
 
 ## Testing / acceptance
 
