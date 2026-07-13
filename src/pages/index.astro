@@ -1,15 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import Stats from '../components/Stats.astro';
-import Features from '../components/Features.astro';
-import Scenarios from '../components/Scenarios.astro';
-import AlwaysOn from '../components/AlwaysOn.astro';
-import DataStory from '../components/DataStory.astro';
-import Showcase from '../components/Showcase.astro';
-import CtaSection from '../components/CtaSection.astro';
-import BetaResults from '../components/BetaResults.astro';
-import NeutralityCallout from '../components/NeutralityCallout.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import MomentBeat from '../components/MomentBeat.astro';
+import CtaBlock from '../components/CtaBlock.astro';
 
 const softwareApplicationLd = {
   '@context': 'https://schema.org',
@@ -19,51 +13,16 @@ const softwareApplicationLd = {
   applicationSubCategory: 'Nutrition coaching',
   operatingSystem: 'Web',
   description:
-    'AI-powered, expert-guided nutrition coaching built on 25 years of methodology from Heather Bauer, RD. Real-time coaching for restaurant orders, GLP-1 nutrition, meal planning, and weight loss.',
+    "AI-powered, expert-guided nutrition coaching built on the 25-year clinical method of Heather Bauer, RD. Meal planning, photo meal logging, and coaching that answers in the moment.",
   url: 'https://getheatherai.com',
   image: 'https://getheatherai.com/images/heather-bauer.webp',
-  provider: {
-    '@type': 'Organization',
-    name: 'Many Brains, Inc.',
-    url: 'https://getheatherai.com',
-  },
+  provider: { '@type': 'Organization', name: 'Many Brains, Inc.', url: 'https://getheatherai.com' },
   offers: [
-    {
-      '@type': 'Offer',
-      name: 'Meal Logging',
-      price: '0',
-      priceCurrency: 'USD',
-      description:
-        'Free meal logging, macro estimates, weight and water tracking, full meal history.',
-    },
-    {
-      '@type': 'Offer',
-      name: 'AI Coaching',
-      price: '39',
-      priceCurrency: 'USD',
-      description:
-        'Full AI nutrition coaching, personalized meal plans, restaurant guidance, health trends, proactive check-ins, weekly video coaching. Includes a 7-day free trial; $39/month after the trial.',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '39',
-        priceCurrency: 'USD',
-        billingDuration: 'P1M',
-      },
-    },
-    {
-      '@type': 'Offer',
-      name: 'AI + Human Coach',
-      price: '299',
-      priceCurrency: 'USD',
-      description:
-        'Everything in AI Coaching plus 2 monthly Zoom sessions with a registered dietitian. Currently waitlist-only.',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '299',
-        priceCurrency: 'USD',
-        billingDuration: 'P1M',
-      },
-    },
+    { '@type': 'Offer', name: 'Meal Logging', price: '0', priceCurrency: 'USD',
+      description: 'Free meal logging: photo and text logging, macro estimates, weight and water tracking, full history.' },
+    { '@type': 'Offer', name: 'AI Coaching', price: '39', priceCurrency: 'USD',
+      description: 'Full AI nutrition coaching: intake interview, personal Blueprint protocol, 72-hour meal plan, photo logging, trends, proactive check-ins, weekly videos. 7-day free trial.',
+      priceSpecification: { '@type': 'UnitPriceSpecification', price: '39', priceCurrency: 'USD', billingDuration: 'P1M' } },
   ],
 };
 ---
@@ -72,17 +31,73 @@ const softwareApplicationLd = {
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(softwareApplicationLd)}></script>
 
   <Hero />
-  <Scenarios />
-  <Stats />
-  <Features />
-  <BetaResults />
-  <NeutralityCallout />
-  <DataStory />
-  <AlwaysOn />
-  <Showcase />
-  <CtaSection
-    headlineHtml={'Try the coach that <em class="not-italic text-accent">meets you in the moment.</em>'}
-    trackEventName="cta_click"
-    trackParams={{ cta_id: 'home_bottom_cta', destination: '/pricing' }}
-  />
+  <ProofStrip />
+
+  <!-- Moments -->
+  <section class="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">Real moments</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        Diets fail at specific moments. <em class="not-italic text-accent">Coaching should show up there.</em>
+      </h2>
+
+      <MomentBeat
+        line="It's 7:40pm and the menu looks dangerous."
+        accent="looks dangerous."
+        messages={[
+          { role: 'user', text: 'At an Italian place, menu is huge. What am I ordering?' },
+          { role: 'ai', text: "Get the branzino. Double vegetables, dressing on the side. Decided before the waiter is back." },
+        ]}
+      />
+      <MomentBeat
+        line="The scale jumped two pounds overnight."
+        accent="two pounds"
+        messages={[
+          { role: 'user', text: 'Scale says 172. Yesterday it was 170. I want to quit.' },
+          { role: 'ai', text: "That's water, not fat. Sushi and popcorn last night means sodium; watch it drop by Thursday. Nothing is wrong." },
+        ]}
+      />
+      <MomentBeat
+        line="Saturday got away from you."
+        accent="got away"
+        messages={[
+          { role: 'user', text: 'Blew the whole weekend. Pizza, cake, all of it.' },
+          { role: 'ai', text: 'No lecture. Reset starts with your next meal, not next week. Want a Protein Day for tomorrow?' },
+        ]}
+      />
+
+      <a href="/scenarios" class="inline-block text-sm text-accent hover:underline mt-2">See more moments &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Method teaser -->
+  <section class="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-[12px] font-bold uppercase tracking-[0.14em] text-accent mb-3">The method</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        Structure does the work, <em class="not-italic text-accent">not willpower.</em>
+      </h2>
+      <p class="text-white/50 mb-8">
+        No streaks. No badges. No macro math. A day with a shape, built by a dietitian who proved it for 25 years.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        {['Protein at every meal', 'Finite foods', 'Kitchen closed', 'One-day resets', 'Goal ranges'].map((t) => (
+          <span class="border border-white/[0.12] bg-bg-surface rounded-full px-5 py-2 text-sm text-white/80">{t}</span>
+        ))}
+      </div>
+      <a href="/method" class="text-sm text-accent hover:underline">Explore the method &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Member voice -->
+  <section class="py-24 px-6 md:px-12 border-t border-white/[0.06] text-center">
+    <blockquote class="max-w-2xl mx-auto text-xl md:text-2xl text-white/85 italic leading-relaxed">
+      "This is why this app is so fantastic. I'm asking in real time where I might have before just eaten it and said screw it."
+    </blockquote>
+    <p class="text-[12px] text-white/35 mt-5">
+      Founding member &middot; Individual results vary. HeatherAI is nutrition coaching, not medical advice or treatment.
+    </p>
+  </section>
+
+  <CtaBlock ctaId="home_bottom_cta" />
 </BaseLayout>
