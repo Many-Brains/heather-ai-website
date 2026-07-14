@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { buildArticleLd, buildFaqLd, buildBreadcrumbLd } from '../../lib/schema';
+import { BRAND_SHORT } from '../../lib/brand';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+
+const articleLd = buildArticleLd({
+  title: d.title,
+  description: d.description,
+  slug: post.id,
+  pubDate: d.pubDate,
+  updatedDate: d.updatedDate,
+  author: d.author,
+  image: d.heroImage,
+});
+const breadcrumbLd = buildBreadcrumbLd(d.title, post.id);
+const faqLd = d.faq && d.faq.length ? buildFaqLd(d.faq) : null;
+
+const formattedDate = d.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${d.title} | ${BRAND_SHORT}`}
+  description={d.description}
+  ogType="article"
+  ogImage={d.heroImage}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleLd)}></script>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)}></script>
+  {faqLd && (
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqLd)}></script>
+  )}
+
+  <article class="max-w-3xl mx-auto px-6 pt-32 pb-24">
+    <a href="/blog" class="text-[13px] text-white/50 hover:text-white transition-colors">Back to Blog</a>
+    <h1 class="mt-6 text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+      {d.title}
+    </h1>
+    <p class="mt-5 text-lg text-white/60">{d.description}</p>
+    <div class="mt-5 text-[13px] text-white/40">
+      {d.author} · <time datetime={d.pubDate.toISOString()}>{formattedDate}</time>
+    </div>
+    <div class="prose-content mt-12 text-white/80 leading-relaxed text-[17px]">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
