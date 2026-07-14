@@ -14,6 +14,7 @@ const currentPath = Astro.url.pathname;
       <a href="/method" class:list={["text-[13px] transition-colors", currentPath === '/method/' || currentPath === '/method' ? 'text-white' : 'text-white/55 hover:text-white']}>Method</a>
       <a href="/glp-1" class:list={["text-[13px] transition-colors", currentPath === '/glp-1/' || currentPath === '/glp-1' ? 'text-white' : 'text-white/55 hover:text-white']}>GLP-1</a>
       <a href="/about" class:list={["text-[13px] transition-colors", currentPath === '/about/' || currentPath === '/about' ? 'text-white' : 'text-white/55 hover:text-white']}>About</a>
+      <a href="/blog" class:list={["text-[13px] transition-colors", currentPath.startsWith('/blog') ? 'text-white' : 'text-white/55 hover:text-white']}>Blog</a>
       <a href="/pricing" class:list={["text-[13px] transition-colors", currentPath === '/pricing/' || currentPath === '/pricing' ? 'text-white' : 'text-white/55 hover:text-white']}>Pricing</a>
       <a
         href="/pricing"
@@ -41,6 +42,7 @@ const currentPath = Astro.url.pathname;
     <a href="/method" class="text-sm text-white/55 hover:text-white transition-colors pt-4">Method</a>
     <a href="/glp-1" class="text-sm text-white/55 hover:text-white transition-colors">GLP-1</a>
     <a href="/about" class="text-sm text-white/55 hover:text-white transition-colors">About</a>
+    <a href="/blog" class="text-sm text-white/55 hover:text-white transition-colors">Blog</a>
     <a href="/pricing" class="text-sm text-white/55 hover:text-white transition-colors">Pricing</a>
     <a
       href="/pricing"
